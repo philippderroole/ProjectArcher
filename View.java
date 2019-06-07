@@ -1,8 +1,12 @@
 import processing.core.*;
 
-public class View extends PApplet{
+public class View{
 
     public View(){
 
+    }
+    
+    public void login(){
+    
     }
 }

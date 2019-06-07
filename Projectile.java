@@ -1,5 +1,5 @@
 
-public class Projectile{
+public class Projectile extends Element{
 
     public Projectile(){
 

@@ -1,8 +1,12 @@
 import processing.core.*;
 
-public class Controller extends PApplet{
+public class Controller{
     
     public Controller(){
 
+    }
+    
+    public void login(){
+        
     }
 }
