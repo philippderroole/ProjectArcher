@@ -19,10 +19,6 @@ public abstract class Entity extends Element{
         
     }
     
-    public void show(){
-        
-    }
-    
     //getter und setter Methoden
     public float getHealth(){
         return health;
