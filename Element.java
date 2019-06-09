@@ -24,9 +24,9 @@ public abstract class Element{
     
     public void show(){
         pApplet.pushMatrix();
-        pApplet.ellipse(position.x, position.y, 50, 50);
         pApplet.translate(position.x, position.y);
         pApplet.rotate(rotation);
+        pApplet.ellipse(position.x, position.y, 50, 50);
         pApplet.popMatrix();
     }
     
