@@ -1,4 +1,5 @@
 import processing.core.*;
+import java.util.*;
 
 public class Main extends PApplet{
     private PApplet pApplet;
@@ -32,8 +33,8 @@ public class Main extends PApplet{
     }
     
     public void login() {
-        model.login();
-        view.login();
-        controller.login(pApplet);
+        model.login(view, controller);
+        view.login(model, controller);
+        controller.login(pApplet, view, model);
     }
 }

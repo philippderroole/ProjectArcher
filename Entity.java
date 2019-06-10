@@ -6,9 +6,13 @@ public abstract class Entity extends Element{
 
     
     //Variablen
+    float maxHealth;
     float health;
     float damage;
+    float critChance;
+    float critMult;
     float attackspeed;
+    float currentDelay;
     float movespeed;
     
     public Entity(){
