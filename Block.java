@@ -4,7 +4,7 @@ public class Block extends Element{
     
     private float gridSize;
     
-    public Block(PVector position, float gridSize, View view){
+    public Block(PVector position, View view){
         this.gridSize = gridSize;
         setPosition(position);
         this.view = view;

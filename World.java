@@ -38,7 +38,7 @@ public class World{
         for(int y = 0; y < 20; y++){
             for(int x = 0; x < 20; x++){
                 if (level[y][x].compareTo("1") == 0) {
-                    blocks.add(new Block(new PVector(x,y), gridSize, view));
+                    blocks.add(new Block(new PVector(x,y), view));
                 }
             }
         }

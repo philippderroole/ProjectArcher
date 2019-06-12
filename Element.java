@@ -47,7 +47,7 @@ public abstract class Element{
     //getter und setter Methoden
 
     public PVector getPosition(){
-        return position;
+        return position.copy();
     }
 
     public float getRotation(){

@@ -21,7 +21,7 @@ public class Main extends PApplet{
     }
 
     public void settings(){ //läuft als zweites
-        size(500,500);
+        size(1000,1000);
     }
 
     public void setup(){ //läuft als drittes

@@ -1,6 +1,6 @@
 import processing.core.*;
 
-public abstract class Enemy extends Entity{
+public abstract class Enemy extends Element{
     
     public Enemy(){
 

@@ -28,11 +28,11 @@ public class Controller{
         this.view = view;
         this.model = model;
 
-        // view.login(player, world, enemyManager, projectileManager);
+        view.login(player, world, enemyManager, projectileManager);
         player.login(view, projectileManager, enemyManager);
         world.login(view, model);
-        enemyManager.login(pApplet);
-        projectileManager.login(pApplet);
+        enemyManager.login(view);
+        projectileManager.login(view);
     }
 
     public void setup(){
@@ -48,7 +48,7 @@ public class Controller{
 
         //System.out.println(checkDirection().x + " " + checkDirection().y);
         player.move(checkDirection());
-        world.checkCollision(player.getCenterPosition());
+        world.checkCollision(player.getPosition());
 
         
         
@@ -60,10 +60,7 @@ public class Controller{
         player.update();
 
         view.show();
-        world.show();
-        player.show();
-        enemyManager.show();
-        projectileManager.show();
+       
 
     }
     
@@ -92,6 +89,6 @@ public class Controller{
         if(pressedKeys.contains("" + 40)){ //unten
             direction.add(0, 1);
         }
-        return direction;
+        return direction.normalize();
     }
 }

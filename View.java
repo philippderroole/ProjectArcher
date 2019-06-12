@@ -20,16 +20,20 @@ public class View{
         this.pApplet = pApplet;
     }
     
-    // public void login(Player player, World world, EnemyManager enemyManager, ProjectileManager projectileManager){
-        // this.player = player;
-        // this.world = world;
-        // this.enemyManager = enemyManager;
-        // this.projectileManager = projectileManager;
-    // }
+    public void login(Player player, World world, EnemyManager enemyManager, ProjectileManager projectileManager){
+        this.player = player;
+        this.world = world;
+        this.enemyManager = enemyManager;
+        this.projectileManager = projectileManager;
+    }
     
     public void show(){
         pApplet.background(255);
         
+        world.show();
+        player.show();
+        enemyManager.show();
+        projectileManager.show();
         //ellipse(new PVector(200, 300), 120, 60, 45);
         
     }
