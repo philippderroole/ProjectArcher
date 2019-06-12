@@ -41,4 +41,11 @@ public class World{
             }
         }
     }
+    
+    public void checkCollision(PVector position){
+        blocks.get(0).intersects(position);
+        // for(Block b : blocks) {
+            // b.intersects(position);
+        // }
+    }
 }

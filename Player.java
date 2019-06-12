@@ -9,8 +9,8 @@ public class Player extends Entity{
     EnemyManager enemyManager;
     
     //Variablen
-    float width = 20;
-    float height = 20;
+    private float width;
+    private float height;
     
     private Enemy target;
     private PVector targetDir;
@@ -18,9 +18,14 @@ public class Player extends Entity{
     
     private float criticalStrikeChance;
     private float criticalStrikeMultiplier;
-    private float movespeed = 2;
+    private float movespeed;
     
     public Player(){
+        width = 20;
+        height = 20;
+        movespeed = 2;
+        
+        attackspeed = 2;
     }
     
     public void login(View view, ProjectileManager projectileManager, EnemyManager enemyManager) {
@@ -68,5 +73,9 @@ public class Player extends Entity{
         } else {
             return false;
         }
+    }
+    
+    public PVector getCenterPosition(){
+        return new PVector(position.x + width / 2, position.y + width / 2);
     }
 }
