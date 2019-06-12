@@ -42,11 +42,11 @@ public class View{
         pApplet.popMatrix();
     }
     
-    public void rect(PVector pos, float dx, float dy, float rotation) {
+    public void rect(PVector position, float width, float height,float rotation) {
         pApplet.pushMatrix();
-        pApplet.translate(pos.x, pos.y);
+        pApplet.translate(position.x, position.y);
         pApplet.rotate((float) ((rotation * Math.PI) / 180));
-        pApplet.rect(0, 0, dx, dy);
+        pApplet.rect(0, 0, width, height);
         pApplet.popMatrix();
     }
 }

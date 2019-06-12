@@ -3,7 +3,7 @@ import java.util.*;
 
 public class World{
     //Klassen zum Anmelden
-    PApplet pApplet;
+    View view;
 
     //Variablen
     private ArrayList<Block> blocks;
@@ -16,8 +16,8 @@ public class World{
         loadWorld();
     }
 
-    public void login(PApplet pApplet, Model model){
-        this.pApplet = pApplet;
+    public void login(View view, Model model){
+        this.view = view;
     }
 
     public void update(){
@@ -35,7 +35,7 @@ public class World{
     public void loadWorld(){
         // for(int i = 0; i < 3; i++){
            for(int j = 0; j < 1; j++){
-                blocks.add(new Block(new PVector(0,j), gridSize, pApplet));
+                blocks.add(new Block(new PVector(0,j), gridSize, view));
            }
         // }
     }

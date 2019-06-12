@@ -4,7 +4,7 @@ import java.util.*;
 public abstract class Element{
 
     //Klassen zum Anmelden
-    protected PApplet pApplet;
+    protected View view;
 
     //Variablen
     protected PVector position;
@@ -15,8 +15,8 @@ public abstract class Element{
         rotation = 0;
     }
 
-    public void login(PApplet pApplet){
-        this.pApplet = pApplet;
+    public void login(View view){
+        this.view = view;
     }
 
     public void update(){
@@ -24,23 +24,23 @@ public abstract class Element{
     }
 
     public void show(){ //default, kann in den Klassen überschrieben werden
-        pApplet.pushMatrix();
-        pApplet.translate(position.x, position.y);
-        pApplet.fill(0);
-        pApplet.stroke(0);
-        pApplet.ellipse(0,0,50,50);
-        pApplet.rotate(rotation);
-        pApplet.popMatrix();
+        // pApplet.pushMatrix();
+        // pApplet.translate(position.x, position.y);
+        // pApplet.fill(0);
+        // pApplet.stroke(0);
+        // pApplet.ellipse(0,0,50,50);
+        // pApplet.rotate(rotation);
+        // pApplet.popMatrix();
     }
 
     public void showHitbox(){ //default, kann in den Klassen überschrieben werden
-        pApplet.pushMatrix();
-        pApplet.translate(position.x, position.y);
-        pApplet.noFill();
-        pApplet.stroke(255, 0, 0);
-        pApplet.ellipse(0,0,50,50);
-        pApplet.rotate(rotation);
-        pApplet.popMatrix();
+        // pApplet.pushMatrix();
+        // pApplet.translate(position.x, position.y);
+        // pApplet.noFill();
+        // pApplet.stroke(255, 0, 0);
+        // pApplet.ellipse(0,0,50,50);
+        // pApplet.rotate(rotation);
+        // pApplet.popMatrix();
     }
 
     public void look(float angle){ //default right

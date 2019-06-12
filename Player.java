@@ -29,11 +29,11 @@ public class Player extends Entity{
     }
     
     public boolean isCriticalStrike(){
-        float f = pApplet.random(100);
-        if(f <= criticalStrikeChance){
-            return true;
-        } else {
-            return false;
-        }
+        // float f = pApplet.random(100);
+        // if(f <= criticalStrikeChance){
+             return true;
+        // } else {
+            // return false;
+        // }
     }
 }
