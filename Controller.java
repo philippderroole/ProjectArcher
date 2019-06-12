@@ -42,11 +42,11 @@ public class Controller{
 
     public void draw(){
         checkDirection();
-        System.out.println(checkDirection().x + " " + checkDirection().y);
-
-
+        //System.out.println(checkDirection().x + " " + checkDirection().y);
         player.move(checkDirection());
 
+        
+        
         //update
         
         world.update();
