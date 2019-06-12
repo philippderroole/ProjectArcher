@@ -26,7 +26,7 @@ public class Controller{
         this.model = model;
 
         //view.login(player, world, enemyManager, projectileManager);
-        player.login(view, projectileManager);
+        player.login(view, projectileManager, enemyManager);
         world.login(view, model);
         enemyManager.login(pApplet);
         projectileManager.login(pApplet);

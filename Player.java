@@ -6,6 +6,7 @@ public class Player extends Entity{
     //Klassen zum Anmelden
     View view;
     ProjectileManager projectileManager;
+    EnemyManager enemyManager;
     
     
     //Variablen
@@ -23,9 +24,10 @@ public class Player extends Entity{
     public Player(){
     }
     
-    public void login(View view, ProjectileManager projectileManager) {
+    public void login(View view, ProjectileManager projectileManager, EnemyManager enemyManager) {
         this.view = view;
         this.projectileManager = projectileManager;
+        this.enemyManager = enemyManager;
     }
     
     public void update() {
@@ -39,6 +41,15 @@ public class Player extends Entity{
     public void move(PVector direction){
         position.x += direction.x * movespeed;
         position.y += direction.y * movespeed;
+    }
+    
+    public void targetNearestEnemy() {
+        ArrayList<Enemy> enemies = enemyManager.getEnemies();
+        int length = enemies.size();
+        int minDist = (int) Math.pow(2,31);
+        for (int i = 0; i < length; i++) {
+            
+        }
     }
     
     public void shoot() {
