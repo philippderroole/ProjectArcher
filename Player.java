@@ -47,7 +47,9 @@ public class Player extends Entity{
         ArrayList<Enemy> enemies = enemyManager.getEnemies();
         int length = enemies.size();
         int minDist = (int) Math.pow(2,31);
+        int aktDist;
         for (int i = 0; i < length; i++) {
+            aktDist = (int) view.pApplet.dist(this.position.x,this.position.y,enemies.get(i).position.x, enemies.get(i).position.y);
             
         }
     }
