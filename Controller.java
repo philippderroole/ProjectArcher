@@ -20,17 +20,19 @@ public class Controller{
         projectileManager = new ProjectileManager();
         
         
-        view.login(player, world, enemyManager, projectileManager);
-        player.login(pApplet);
-        world.login(pApplet, model);
-        enemyManager.login(pApplet);
-        projectileManager.login(pApplet);
+        
     }
     
     public void login(PApplet pApplet, View view, Model model){
         this.pApplet = pApplet;
         this.view = view;
         this.model = model;
+        
+        // view.login(player, world, enemyManager, projectileManager);
+        player.login(pApplet);
+        world.login(pApplet, model);
+        enemyManager.login(pApplet);
+        projectileManager.login(pApplet);
     }
     
     public void setup(){
@@ -38,7 +40,7 @@ public class Controller{
     }
     
     public void draw(){
-        pApplet.background(255);
+        
         
         player.move(5);
         
@@ -47,6 +49,8 @@ public class Controller{
         world.update();
         enemyManager.update();
         projectileManager.update();
+        
+        
         
         view.show();
     }
