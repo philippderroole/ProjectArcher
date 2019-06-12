@@ -45,7 +45,7 @@ public class Controller{
         System.out.println(checkDirection().x + " " + checkDirection().y);
 
 
-        player.move(new PVector(1,1));
+        player.move(checkDirection());
 
         //update
         

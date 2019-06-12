@@ -39,7 +39,7 @@ public class Player extends Entity{
     
     public void move(PVector direction){
         position.x += direction.x * movespeed;
-        position.y += direction.y * movespeed;
+        position.y -= direction.y * movespeed;
     }
     
     public void targetNearestEnemy() {
