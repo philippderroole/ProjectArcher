@@ -4,12 +4,14 @@ public class Block extends Element{
     
     private float gridSize;
     
-    public Block(PVector position, float gridSize){
+    public Block(PVector position, float gridSize, PApplet pApplet){
         this.gridSize = gridSize;
         setPosition(position);
+        this.pApplet = pApplet;
     }
     
     public void show(){
+        System.out.println(pApplet);
         pApplet.pushMatrix();
         pApplet.translate(position.x, position.y);
         pApplet.fill(0);
@@ -30,7 +32,7 @@ public class Block extends Element{
     }
     
     public void setPosition(PVector position){
-        
+        this.position = new PVector(position.x * gridSize, position.y * gridSize);
     }
     
     public PVector getPosition(){

@@ -14,11 +14,16 @@ public class Controller{
     ProjectileManager projectileManager;
     
     public Controller(){
+        projectileManager = new ProjectileManager();
         player = new Player(projectileManager);
         world = new World();
         enemyManager = new EnemyManager();
-        projectileManager = new ProjectileManager();
-        
+    }
+    
+    public void login(PApplet pApplet, View view, Model model){
+        this.pApplet = pApplet;
+        this.view = view;
+        this.model = model;
         
         view.login(player, world, enemyManager, projectileManager);
         player.login(pApplet);
@@ -27,14 +32,9 @@ public class Controller{
         projectileManager.login(pApplet);
     }
     
-    public void login(PApplet pApplet, View view, Model model){
-        this.pApplet = pApplet;
-        this.view = view;
-        this.model = model;
-    }
-    
     public void setup(){
         pApplet.frameRate(30);
+        world.loadWorld();
     }
     
     public void draw(){

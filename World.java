@@ -21,18 +21,22 @@ public class World{
     }
 
     public void update(){
-        blocks.forEach((u) -> u.show());
+        Block b = blocks.remove(0);
+        b.update();
+        blocks.add(b);
     }
 
     public void show(){
-        blocks.forEach((b) -> b.show());
+        Block b = blocks.remove(0);
+        b.show();
+        blocks.add(b);
     }
 
     public void loadWorld(){
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 20; j++){
-                blocks.add(new Block(new PVector(j,i), gridSize));
-            }
-        }
+        // for(int i = 0; i < 3; i++){
+           for(int j = 0; j < 1; j++){
+                blocks.add(new Block(new PVector(0,j), gridSize, pApplet));
+           }
+        // }
     }
 }
