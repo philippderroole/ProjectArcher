@@ -23,4 +23,8 @@ public class EnemyManager{
     public void show(){
         enemies.forEach((e) -> e.show());
     }
+    
+    public ArrayList getEnemies() {
+        return enemies;
+    }
 }

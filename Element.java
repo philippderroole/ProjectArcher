@@ -31,8 +31,9 @@ public abstract class Element{
         }
     }
 
-    public void move(float distance){
-        position.x += distance;
+    public void move(PVector direction){
+        position.x += direction.x;
+        position.y += direction.y;
     }
     
     public float random(float max){

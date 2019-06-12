@@ -18,7 +18,7 @@ public class World{
     }
 
     public void setup() {
-        gridSize = (view.getWidth()) / 20;
+        gridSize = view.getWidth() / 20;
         loadWorld();
     }
     
