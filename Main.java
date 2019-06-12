@@ -34,7 +34,7 @@ public class Main extends PApplet{
 
     public void login() {
         model.login(view, controller);
-        view.login(model, controller);
+        view.login(model, controller, pApplet);
         controller.login(pApplet, view, model);
     }
 }
