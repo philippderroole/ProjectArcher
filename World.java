@@ -17,7 +17,7 @@ public class World{
         this.view = view;
     }
 
-    public void setup() {
+    public void setup(String[][] level) {
         gridSize = view.getWidth() / 20;
         loadWorld();
     }

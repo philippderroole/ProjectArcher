@@ -37,7 +37,10 @@ public class Controller{
 
     public void setup(){
         pApplet.frameRate(30);
-        world.setup();
+        
+        String[][] level = model.getLevel(1);
+        
+        world.setup(level);
     }
 
     public void draw(){
