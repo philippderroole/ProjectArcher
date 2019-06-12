@@ -31,6 +31,14 @@ public class Main extends PApplet{
     public void draw(){
         controller.draw();
     }
+    
+    public void keyPressed(){
+        controller.keyPressed();
+    }
+    
+    public void keyReleased(){
+        controller.keyReleased();
+    }
 
     public void login() {
         model.login(view, controller);

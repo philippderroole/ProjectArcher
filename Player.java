@@ -6,7 +6,6 @@ public class Player extends Entity{
     //Klassen zum Anmelden
     ProjectileManager projectileManager;
     
-    
     //Variablen
     private Enemy target;
     private PVector targetDir;
@@ -20,6 +19,10 @@ public class Player extends Entity{
         this.projectileManager = projectileManager;
     }
     
+    public void show(){
+        view.ellipse(position, 50, 50, 0);
+    }
+    
     public void shoot() {
         if(isCriticalStrike()){
             projectileManager.addPlayerProjectile(targetDir, damage * criticalStrikeMultiplier, effects);
@@ -29,11 +32,11 @@ public class Player extends Entity{
     }
     
     public boolean isCriticalStrike(){
-        // float f = pApplet.random(100);
-        // if(f <= criticalStrikeChance){
+        float f = random(100);
+        if(f <= criticalStrikeChance){
              return true;
-        // } else {
-            // return false;
-        // }
+        } else {
+            return false;
+        }
     }
 }

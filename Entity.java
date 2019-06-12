@@ -16,11 +16,7 @@ public abstract class Entity extends Element{
     public Entity(){
 
     }
-    
-    public void update(){
-        
-    }
-    
+
     //getter und setter Methoden
     public float getHealth(){
         return health;

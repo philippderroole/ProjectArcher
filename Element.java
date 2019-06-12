@@ -23,26 +23,6 @@ public abstract class Element{
         
     }
 
-    public void show(){ //default, kann in den Klassen überschrieben werden
-        // pApplet.pushMatrix();
-        // pApplet.translate(position.x, position.y);
-        // pApplet.fill(0);
-        // pApplet.stroke(0);
-        // pApplet.ellipse(0,0,50,50);
-        // pApplet.rotate(rotation);
-        // pApplet.popMatrix();
-    }
-
-    public void showHitbox(){ //default, kann in den Klassen überschrieben werden
-        // pApplet.pushMatrix();
-        // pApplet.translate(position.x, position.y);
-        // pApplet.noFill();
-        // pApplet.stroke(255, 0, 0);
-        // pApplet.ellipse(0,0,50,50);
-        // pApplet.rotate(rotation);
-        // pApplet.popMatrix();
-    }
-
     public void look(float angle){ //default right
         if(angle < 360 && angle > 0){
             setRotation(angle);
@@ -53,6 +33,14 @@ public abstract class Element{
 
     public void move(float distance){
         position.x += distance;
+    }
+    
+    public float random(float max){
+        return (float) Math.random() * max;
+    }
+    
+    public float random(float min, float max){
+        return (float) Math.random() * (max - min) - min;
     }
 
     //getter und setter Methoden

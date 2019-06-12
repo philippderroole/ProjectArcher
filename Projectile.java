@@ -9,4 +9,8 @@ public class Projectile extends Element{
     public Projectile(){
 
     }
+    
+    public void show(){
+        view.ellipse(position, 50, 50, 0);
+    }
 }
