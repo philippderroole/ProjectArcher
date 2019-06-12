@@ -33,9 +33,9 @@ public class World{
     }
 
     public void loadWorld(){
-        // for(int i = 0; i < 3; i++){
-           for(int j = 0; j < 1; j++){
-                blocks.add(new Block(new PVector(0,j), gridSize, view));
+        // for(int y = 0; y < 3; y++){
+           for(int x = 0; x < 1; x++){
+                blocks.add(new Block(new PVector(x,0), gridSize, view));
            }
         // }
     }
