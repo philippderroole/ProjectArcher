@@ -8,12 +8,23 @@ public class Controller{
     Model model;
     
     //Variablen
-    Player p;
-    World w;
-    EnemyManager em;
-    ProjectileManager pm;
+    Player player;
+    World world;
+    EnemyManager enemyManager;
+    ProjectileManager projectileManager;
     
     public Controller(){
+        player = new Player(projectileManager);
+        world = new World();
+        enemyManager = new EnemyManager();
+        projectileManager = new ProjectileManager();
+        
+        
+        view.login(player, world, enemyManager, projectileManager);
+        player.login(pApplet);
+        world.login(pApplet, model);
+        enemyManager.login(pApplet);
+        projectileManager.login(pApplet);
     }
     
     public void login(PApplet pApplet, View view, Model model){
@@ -23,12 +34,20 @@ public class Controller{
     }
     
     public void setup(){
-        p = new Player(pm);
-        p.login(pApplet);
+        pApplet.frameRate(30);
     }
     
     public void draw(){
         pApplet.background(255);
-        p.show();
+        
+        player.move(5);
+        
+        //update
+        player.update();
+        world.update();
+        enemyManager.update();
+        projectileManager.update();
+        
+        view.show();
     }
 }

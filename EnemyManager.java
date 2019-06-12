@@ -1,10 +1,26 @@
 import processing.core.*;
+import java.util.*;
 
 public class EnemyManager{
+    //Klassen zum Anmelden
+    PApplet pApplet;
     
-    Enemy[] enemies;
-    
+    //Variablen
+    private ArrayList<Enemy> enemies;
+
     public EnemyManager(){
-        enemies = new Enemy[0];
+        enemies = new ArrayList<Enemy>();
+    }
+    
+    public void login(PApplet pApplet){
+        this.pApplet = pApplet;
+    }
+
+    public void update(){
+        enemies.forEach((e) -> e.update());
+    }
+
+    public void show(){
+        enemies.forEach((e) -> e.show());
     }
 }

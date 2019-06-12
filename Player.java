@@ -3,22 +3,37 @@ import java.util.*;
 
 public class Player extends Entity{
     
-    //anmelden
-    ProjectileManager pm;
+    //Klassen zum Anmelden
+    ProjectileManager projectileManager;
     
     
     //Variablen
-    Enemy target;
-    PVector targetDir;
-    String[] effects;
+    private Enemy target;
+    private PVector targetDir;
+    private String[] effects;
     
-    public Player(ProjectileManager pm){
-        this.pm = pm;
+    private float criticalStrikeChance;
+    private float criticalStrikeMultiplier;
+    private float movespeed;
+    
+    public Player(ProjectileManager projectileManager){
+        this.projectileManager = projectileManager;
     }
     
     public void shoot() {
-        //if abfrage ob random wert in crit bereich fällt und erhöhten schaden übergeben
-        pm.addPlayerProjectile(targetDir, damage, effects);
+        if(isCriticalStrike()){
+            projectileManager.addPlayerProjectile(targetDir, damage * criticalStrikeMultiplier, effects);
+        } else {
+            projectileManager.addPlayerProjectile(targetDir, damage, effects);
+        }
     }
     
+    public boolean isCriticalStrike(){
+        float f = pApplet.random(100);
+        if(f <= criticalStrikeChance){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

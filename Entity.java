@@ -6,14 +6,12 @@ public abstract class Entity extends Element{
 
     
     //Variablen
-    float maxHealth;
-    float health;
-    float damage;
-    float critChance;
-    float critMult;
-    float attackspeed;
-    float currentDelay;
-    float movespeed;
+    protected float maxHealth;
+    protected float health;
+    protected float damage;
+    protected float attackspeed;
+    protected float currentDelay;
+
     
     public Entity(){
 
@@ -36,10 +34,6 @@ public abstract class Entity extends Element{
         return attackspeed;
     }
     
-    public float getMovespeed(){
-        return movespeed;
-    }
-    
     public void setHealth(float health){
         this.health = health;
     }
@@ -50,9 +44,5 @@ public abstract class Entity extends Element{
     
     public void setAttackspeed(float attackspeed){
         this.attackspeed = attackspeed;
-    }
-    
-    public void setMovespeed(float movespeed){
-        this.movespeed = movespeed;
     }
 }

@@ -2,39 +2,47 @@ import processing.core.*;
 import java.util.*;
 
 public abstract class Element{
-    
+
     //Klassen zum Anmelden
-    private PApplet pApplet;
-    
+    protected PApplet pApplet;
+
     //Variablen
-    private PVector position;
-    private float rotation;
-    
+    protected PVector position;
+    protected float rotation;
+
     public Element(){
         position = new PVector(0,0);
         rotation = 0;
     }
-    
+
     public void login(PApplet pApplet){
         this.pApplet = pApplet;
     }
-    
+
     public void update(){
         
     }
-    
-    public void show(){
+
+    public void show(){ //default, kann in den Klassen überschrieben werden
         pApplet.pushMatrix();
         pApplet.translate(position.x, position.y);
+        pApplet.fill(0);
+        pApplet.stroke(0);
+        pApplet.ellipse(0,0,50,50);
         pApplet.rotate(rotation);
-        pApplet.ellipse(position.x, position.y, 50, 50);
         pApplet.popMatrix();
     }
-    
-    public void rotate(){
-        
+
+    public void showHitbox(){ //default, kann in den Klassen überschrieben werden
+        pApplet.pushMatrix();
+        pApplet.translate(position.x, position.y);
+        pApplet.noFill();
+        pApplet.stroke(255, 0, 0);
+        pApplet.ellipse(0,0,50,50);
+        pApplet.rotate(rotation);
+        pApplet.popMatrix();
     }
-    
+
     public void look(float angle){ //default right
         if(angle < 360 && angle > 0){
             setRotation(angle);
@@ -42,25 +50,25 @@ public abstract class Element{
             setRotation(0);
         }
     }
-    
+
     public void move(float distance){
-        
+        position.x += distance;
     }
-    
+
     //getter und setter Methoden
-    
+
     public PVector getPosition(){
         return position;
     }
-    
+
     public float getRotation(){
         return rotation;
     }
-    
+
     public void setPosition(PVector position){
         this.position = position;
     }
-    
+
     public void setRotation(float rotation){
         this.rotation = rotation;
     }
