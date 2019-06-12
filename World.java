@@ -17,11 +17,11 @@ public class World{
         this.view = view;
     }
 
-    public void setup() {
+    public void setup(String[][] level) {
         gridSize = view.getWidth() / 20;
-        loadWorld();
+        loadWorld(level);
     }
-    
+
     public void update(){
         for(Block b : blocks) {
             b.update();
@@ -34,10 +34,12 @@ public class World{
         }
     }
 
-    public void loadWorld(){
-        for(int y = 0; y < 3; y++){
+    public void loadWorld(String[][] level){
+        for(int y = 0; y < 20; y++){
             for(int x = 0; x < 20; x++){
-                blocks.add(new Block(new PVector(x,y), gridSize, view));
+                if (level[y][x].compareTo("1") == 0) {
+                    blocks.add(new Block(new PVector(x,y), gridSize, view));
+                }
             }
         }
     }

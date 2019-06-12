@@ -37,16 +37,21 @@ public class Controller{
 
     public void setup(){
         pApplet.frameRate(30);
-        world.setup();
+        
+        String[][] level = model.getLevel(1);
+        
+        world.setup(level);
     }
 
     public void draw(){
         checkDirection();
 
-
+        //System.out.println(checkDirection().x + " " + checkDirection().y);
         player.move(checkDirection());
         world.checkCollision(player.getCenterPosition());
 
+        
+        
         //update
         
         world.update();
@@ -79,13 +84,13 @@ public class Controller{
             direction.add(-1, 0);
         }
         if(pressedKeys.contains("" + 38)){ //oben            
-            direction.add(0, 1);
+            direction.add(0, -1);
         }
         if(pressedKeys.contains("" + 39)){ //rechts
             direction.add(1, 0);
         }
         if(pressedKeys.contains("" + 40)){ //unten
-            direction.add(0, -1);
+            direction.add(0, 1);
         }
         return direction;
     }
