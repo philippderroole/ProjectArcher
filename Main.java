@@ -7,7 +7,7 @@ public class Main extends PApplet{
     private View view;
     private Controller controller;
 
-    public Main(){ // läuft als erstes
+    public Main(){ //läuft als erstes
         pApplet = this;
         model = new Model();
         view = new View();
@@ -20,11 +20,11 @@ public class Main extends PApplet{
         PApplet.main("Main"); //startet PApplet und ruft Main() auf
     }
 
-    public void settings(){ // läuft als zweites
+    public void settings(){ //läuft als zweites
         size(500,500);
     }
 
-    public void setup(){ // läuft als drittes
+    public void setup(){ //läuft als drittes
         controller.setup();
     }
 

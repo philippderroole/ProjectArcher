@@ -28,7 +28,7 @@ public class Controller{
         this.view = view;
         this.model = model;
 
-        //view.login(player, world, enemyManager, projectileManager);
+        // view.login(player, world, enemyManager, projectileManager);
         player.login(view, projectileManager, enemyManager);
         world.login(view, model);
         enemyManager.login(pApplet);
@@ -55,17 +55,15 @@ public class Controller{
         player.update();
 
         view.show();
-        player.show();
         world.show();
+        player.show();
         enemyManager.show();
         projectileManager.show();
 
     }
     
     public void keyPressed(){
-        if(pressedKeys.contains("" + pApplet.keyCode)){
-        
-        } else {
+        if(!pressedKeys.contains("" + pApplet.keyCode)){        
             pressedKeys.add("" + pApplet.keyCode);
         }
     }
@@ -76,10 +74,11 @@ public class Controller{
     
     public PVector checkDirection(){
         PVector direction = new PVector(0,0);
+        
         if(pressedKeys.contains("" + 37)){ //links
             direction.add(-1, 0);
         }
-        if(pressedKeys.contains("" + 38)){ //oben
+        if(pressedKeys.contains("" + 38)){ //oben            
             direction.add(0, 1);
         }
         if(pressedKeys.contains("" + 39)){ //rechts
