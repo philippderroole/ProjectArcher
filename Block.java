@@ -4,7 +4,7 @@ public class Block extends Element{
     
     private float gridSize;
     
-    public Block(PVector position, View view){
+    public Block(PVector position, float gridSize, View view){
         this.gridSize = gridSize;
         setPosition(position);
         this.view = view;
@@ -12,6 +12,7 @@ public class Block extends Element{
     
     public void show(){
         view.rect(position, gridSize, gridSize, 0);
+        System.out.println("hi");
     }
 
     public void showHitbox(){
