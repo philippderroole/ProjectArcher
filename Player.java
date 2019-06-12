@@ -18,7 +18,7 @@ public class Player extends Entity{
     
     private float criticalStrikeChance;
     private float criticalStrikeMultiplier;
-    private float movespeed = 2;
+    private float movespeed = 4;
     
     public Player(){
     }
@@ -38,8 +38,10 @@ public class Player extends Entity{
     }
     
     public void move(PVector direction){
-        position.x += direction.x * movespeed;
-        position.y -= direction.y * movespeed;
+        PVector moveVector = direction.copy();
+        moveVector.normalize();
+        moveVector.mult(movespeed);
+        position.add(moveVector);
     }
     
     public void targetNearestEnemy() {
