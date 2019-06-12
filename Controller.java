@@ -15,7 +15,7 @@ public class Controller{
 
     public Controller(){
         projectileManager = new ProjectileManager();
-        player = new Player(projectileManager);
+        player = new Player();
         world = new World();
         enemyManager = new EnemyManager();
     }
@@ -26,7 +26,7 @@ public class Controller{
         this.model = model;
 
         //view.login(player, world, enemyManager, projectileManager);
-        player.login(view);
+        player.login(view, projectileManager);
         world.login(view, model);
         enemyManager.login(pApplet);
         projectileManager.login(pApplet);
@@ -39,14 +39,14 @@ public class Controller{
     }
 
     public void draw(){
-
-        player.move(5);
+        player.move(new PVector(1,1));
 
         //update
-        player.update();
+        
         world.update();
         enemyManager.update();
         projectileManager.update();
+        player.update();
 
         view.show();
         player.show();

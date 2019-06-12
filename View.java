@@ -30,7 +30,7 @@ public class View{
     public void show(){
         pApplet.background(255);
         
-        ellipse(new PVector(200, 300), 120, 60, 45);
+        //ellipse(new PVector(200, 300), 120, 60, 45);
         
     }
     

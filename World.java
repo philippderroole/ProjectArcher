@@ -38,7 +38,7 @@ public class World{
     public void loadWorld(){
         System.out.println("world " + view);
         // for(int y = 0; y < 3; y++){
-        for(int x = 0; x < 15; x++){
+        for(int x = 0; x < 20; x++){
             blocks.add(new Block(new PVector(x,0), gridSize, view));
         }
         // }
