@@ -49,4 +49,12 @@ public class View{
         pApplet.rect(0, 0, width, height);
         pApplet.popMatrix();
     }
+    
+    public int getWidth() {
+        return pApplet.width;
+    }
+    
+    public int getHeight() {
+        return pApplet.height;
+    }
 }

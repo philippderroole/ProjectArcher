@@ -34,7 +34,8 @@ public class Controller{
 
     public void setup(){
         pApplet.frameRate(30);
-        world.loadWorld();
+        world.setup();
+        
     }
 
     public void draw(){

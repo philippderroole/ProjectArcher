@@ -11,32 +11,36 @@ public class World{
 
     public World(){
         blocks = new ArrayList<Block>();
-        gridSize = 50;
 
-        loadWorld();
     }
 
     public void login(View view, Model model){
         this.view = view;
     }
 
+    public void setup() {
+        gridSize = view.getWidth() / 10;
+        loadWorld();
+    }
+    
     public void update(){
-        Block b = blocks.remove(0);
-        b.update();
-        blocks.add(b);
+        for(Block b : blocks) {
+            b.update();
+        }
     }
 
     public void show(){
-        Block b = blocks.remove(0);
-        b.show();
-        blocks.add(b);
+        for(Block b : blocks) {
+            b.show();
+        }
     }
 
     public void loadWorld(){
+        System.out.println("world " + view);
         // for(int y = 0; y < 3; y++){
-           for(int x = 0; x < 1; x++){
-                blocks.add(new Block(new PVector(x,0), gridSize, view));
-           }
+        for(int x = 0; x < 2; x++){
+            blocks.add(new Block(new PVector(x,0), gridSize, view));
+        }
         // }
     }
 }

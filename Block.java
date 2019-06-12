@@ -11,7 +11,7 @@ public class Block extends Element{
     }
     
     public void show(){
-        //System.out.println(view);
+        // System.out.println(position.x + ", " + view);
         view.rect(position, gridSize, gridSize, 0);
         // pApplet.pushMatrix();
         // pApplet.translate(position.x, position.y);
