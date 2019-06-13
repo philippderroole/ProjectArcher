@@ -47,7 +47,7 @@ public class Player extends Element{
     }
 
     public void update(){
-        if(enemyManager.isEnemy()){
+        if(enemyManager.isEnemy() && !moving){
             currentDelay--;
             if(currentDelay <= 0){
                 targetNearestEnemy();
@@ -68,7 +68,16 @@ public class Player extends Element{
     }
 
     public void move(PVector direction){
-        position.add(direction.copy().mult(movespeed));
+        if (direction.mag() > 0) {
+            position.add(direction.copy().mult(movespeed));
+            if (!moving) {
+                moving = true;
+                System.out.println("moving");
+            }
+        } else if (moving) {
+            moving = false;
+            System.out.println("standing");
+        }
     }
 
     public void targetNearestEnemy(){
