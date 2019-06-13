@@ -52,7 +52,7 @@ public class Controller{
         // world.checkCollision(player.getPosition().copy(), player.getSize());
         player.correctPosition(world.getIntersection(player.getPosition().copy(), player.getSize()));
         player.getDamage(projectileManager.getPlayerDamage(player.getPosition().copy(), player.getSize()));
-        world.checkIntersection();
+        world.checkIntersection(); //moomentan nur block-Projectile
         enemyManager.checkEnemyDamage();
         
         

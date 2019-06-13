@@ -56,10 +56,11 @@ public class ProjectileManager extends PApplet{
         return damage;
     }
     
-    public void checkBlocks(PVector position, float size){
+    public void checkBlocks(Block b){
         // blocks.get(2).intersects(position.copy(), size);
         for(int i = projectiles.size() - 1; i >= 0; i--) {
-            if(projectiles.get(i).intersectsBlock(position.copy(), size)){
+            Projectile p = projectiles.get(i);
+            if(b.intersectsCircle(p.getNextStepPosition(), p.size)){
                 projectiles.remove(i);
             }
         }

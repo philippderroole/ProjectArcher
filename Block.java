@@ -43,7 +43,6 @@ public class Block extends Element{
         while(angle > 45) {
             angle -= 45;
             i++;
-            
         }
         if (i%2==0) {
                 angle = -angle + 45;
@@ -54,7 +53,25 @@ public class Block extends Element{
          // return gridSize / 2;
     }
     
+    public boolean intersectsCircle(PVector position, float size){
+        PVector pToB = getCenterPosition().sub(position);
+        float pToBLength = (float) Math.sqrt(Math.pow(pToB.x, 2) + Math.pow(pToB.y, 2));
+        float minLength = distancetoEdge(pToB.heading()) + size / 2; //Übergabe noch irrelevant
+        if(pToBLength < minLength){
+            System.out.println("Intersection!");
+            // System.out.println(pToB.copy().normalize().mult(-minLength));
+            return true;
+        } else {
+            return false;
+        }
+    } 
+    
     public PVector getCenterPosition(){
         return new PVector(position.x + gridSize / 2, position.y + gridSize / 2);
     }
+    
+    public float getGridSize() {
+        return gridSize;
+    }
+    
 }

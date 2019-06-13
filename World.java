@@ -57,7 +57,7 @@ public class World{
     
     public void checkIntersection(){
         for(Block b : blocks) {
-            projectileManager.checkBlocks(b.getCenterPosition(), gridSize / 2);
+            projectileManager.checkBlocks(b);
         }
     }
 }
