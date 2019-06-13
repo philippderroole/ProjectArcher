@@ -4,6 +4,7 @@ import java.util.*;
 public class World{
     //Klassen zum Anmelden
     View view;
+    ProjectileManager projectileManager;
 
     //Variablen
     private ArrayList<Block> blocks;
@@ -13,8 +14,9 @@ public class World{
         blocks = new ArrayList<Block>();
     }
 
-    public void login(View view, Model model){
+    public void login(View view, ProjectileManager projectileManager){
         this.view = view;
+        this.projectileManager = projectileManager;
     }
 
     public void setup(String[][] level) {
@@ -51,5 +53,11 @@ public class World{
             p.add(b.intersectsPlayer(position.copy(), size));
         }
         return p;
+    }
+    
+    public void checkIntersection(){
+        for(Block b : blocks) {
+            projectileManager.checkBlocks(b.getCenterPosition(), gridSize / 2);
+        }
     }
 }

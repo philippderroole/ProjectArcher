@@ -55,4 +55,13 @@ public class ProjectileManager extends PApplet{
         }
         return damage;
     }
+    
+    public void checkBlocks(PVector position, float size){
+        // blocks.get(2).intersects(position.copy(), size);
+        for(int i = projectiles.size() - 1; i >= 0; i--) {
+            if(projectiles.get(i).intersectsBlock(position.copy(), size)){
+                projectiles.remove(i);
+            }
+        }
+    }
 }

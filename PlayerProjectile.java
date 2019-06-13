@@ -1,7 +1,7 @@
 import processing.core.*;
 
 public class PlayerProjectile extends Projectile{
-    private float size;
+
     private float speed;
     private PVector direction;
     

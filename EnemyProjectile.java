@@ -1,7 +1,7 @@
 import processing.core.*;
 
 public class EnemyProjectile extends Projectile{
-    private float size;
+
     
     public EnemyProjectile(){
         size = 10;
