@@ -44,10 +44,11 @@ public class World{
         }
     }
     
-    public void checkCollision(PVector position){
-        blocks.get(0).intersects(position);
-        // for(Block b : blocks) {
-            // b.intersects(position);
-        // }
+    public PVector checkCollision(PVector position, float size){
+        // blocks.get(2).intersects(position.copy(), size);
+        for(Block b : blocks) {
+            return b.intersectsPlayer(position.copy(), size);
+        }
+        return null;
     }
 }

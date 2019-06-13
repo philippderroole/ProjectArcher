@@ -92,4 +92,8 @@ public class Player extends Element{
     public void resetDelay(){
         currentDelay = attackspeed * 30;
     }
+    
+    public float getSize(){
+        return size;
+    }
 }

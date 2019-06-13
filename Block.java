@@ -22,29 +22,28 @@ public class Block extends Element{
         this.position = new PVector(gridPosition.x * gridSize, gridPosition.y * gridSize);
     }
     
-    public float intersects(PVector position){
-        // PVector center = new PVector(this.position.x + (gridSize / 2), this.position.y + (gridSize / 2));
-        
-        // PVector c = center.copy();
-        // PVector p = position.copy();
-        // float distance = center.dist(position);
-        // float angle = (float) Math.toDegrees( PVector.angleBetween(c.normalize(), p.normalize()));
-        // // float f = center.dist(position) - distancetoEdge(PVector.angleBetween(center, position));
-        // System.out.println(Math.toDegrees(c.heading()));
-        // System.out.println(Math.toDegrees(p.heading()));
-        // System.out.println(Math.toDegrees(p.sub(c).heading()));
-        // System.out.println(center.x + "  " + center.y);
-        // System.out.println("dist" + distance);
-        // System.out.println("angle" + angle);
-        // // System.out.println("f" + f);
-        return 0;
+    public PVector intersectsPlayer(PVector position, float size){
+        PVector pToB = getCenterPosition().sub(position);
+        float pToBLength = (float) Math.sqrt(Math.pow(pToB.x, 2) + Math.pow(pToB.y, 2));
+        float minLength = distancetoEdge(pToB.heading()) + size / 2; //Übergabe noch irrelevant
+        if(pToBLength < minLength){
+            System.out.println("Intersection!");
+            // System.out.println(pToB.copy().normalize().mult(-minLength));
+            return pToB.copy().normalize().mult(-minLength);
+        } else {
+            // System.out.println(pToB.copy().sub(pToB.copy().normalize().mult(minLength)));
+            return new PVector();
+        }
+        // System.out.println("pToE: " + pToB);
+        // System.out.println("pToE heading: " + Math.toDegrees(pToB.heading()));
+        // System.out.println("pToE dist: " + Math.sqrt(Math.pow(pToB.x, 2) + Math.pow(pToB.y, 2)));
     } 
     
     public float distancetoEdge(float direction){
-        while(direction > 90){
-            direction -= 90;
-        }
-        
-        return (float) ((0.5 * gridSize) / Math.cos(direction));
+        return gridSize / 2;
+    }
+    
+    public PVector getCenterPosition(){
+        return new PVector(position.x + gridSize / 2, position.y + gridSize / 2);
     }
 }

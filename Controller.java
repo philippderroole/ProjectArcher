@@ -49,7 +49,7 @@ public class Controller{
 
         //System.out.println(checkDirection().x + " " + checkDirection().y);
         player.move(checkDirection());
-        world.checkCollision(player.getPosition());
+        player.move(world.checkCollision(player.getPosition().copy(), player.getSize()));
 
         
         
