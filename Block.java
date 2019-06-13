@@ -29,7 +29,7 @@ public class Block extends Element{
         if(pToBLength < minLength){
             System.out.println("Intersection!");
             // System.out.println(pToB.copy().normalize().mult(-minLength));
-            return pToB.copy().normalize().mult(-minLength);
+            return pToB.copy().normalize().mult(pToBLength-minLength);
         } else {
             // System.out.println(pToB.copy().sub(pToB.copy().normalize().mult(minLength)));
             return new PVector();

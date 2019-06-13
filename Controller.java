@@ -3,12 +3,12 @@ import java.util.*;
 
 public class Controller{
 
-    //Klassen zum Anmelden
+    // Klassen zum Anmelden
     PApplet pApplet;
     View view;
     Model model;
 
-    //Variablen
+    // Variablen
     private Player player;
     private World world;
     private EnemyManager enemyManager;
@@ -47,10 +47,10 @@ public class Controller{
     public void draw(){
         checkDirection();
 
-        //System.out.println(checkDirection().x + " " + checkDirection().y);
+        // System.out.println(checkDirection().x + " " + checkDirection().y);
         player.move(checkDirection());
-        world.checkCollision(player.getPosition().copy(), player.getSize());
-        // player.move(world.checkCollision(player.getPosition().copy(), player.getSize()));
+        // world.checkCollision(player.getPosition().copy(), player.getSize());
+        player.moveReal(world.checkCollision(player.getPosition().copy(), player.getSize()));
 
         
         

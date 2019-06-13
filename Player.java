@@ -28,6 +28,7 @@ public class Player extends Element{
     //und nicht dauerjaft sodass auch mal ein enemy totgeschossen wird
     
     public Player(){
+        position = new PVector(100,100);
         size = 50;
         maxHealth = 1000;
         health = maxHealth;
@@ -60,6 +61,10 @@ public class Player extends Element{
     
     public void show(){
         view.ellipse(position, size, size, rotation);
+    }
+    
+    public void moveReal(PVector direction){
+        position.add(direction.copy());
     }
 
     public void move(PVector direction){
