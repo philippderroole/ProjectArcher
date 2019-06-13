@@ -55,7 +55,7 @@ public class World{
         return p;
     }
     
-    public void checkIntersection(){
+    public void checkBlockProjectileIntersection(){
         for(Block b : blocks) {
             projectileManager.checkBlocks(b);
         }
