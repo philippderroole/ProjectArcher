@@ -4,6 +4,7 @@ import java.util.*;
 public class EnemyManager{
     //Klassen zum Anmelden
     View view;
+    ProjectileManager projectileManager;
     
     //Variablen
     private ArrayList<Enemy> enemies;
@@ -13,8 +14,9 @@ public class EnemyManager{
         enemies = new ArrayList<Enemy>();
     }
     
-    public void login(View view){
+    public void login(View view, ProjectileManager projectileManager){
         this.view = view;
+        this.projectileManager = projectileManager;
     }
     
     public void update(){
@@ -57,6 +59,12 @@ public class EnemyManager{
         }
         PVector direction = nearestEnemyPosition.sub(playerPosition);
         return direction.normalize();
+    }
+    
+    public void checkEnemyDamage(){
+        for(Enemy e : enemies) {
+            projectileManager.getEnemyDamage(e.position.copy(), e.getSize());
+        }
     }
     
     public boolean isEnemy(){

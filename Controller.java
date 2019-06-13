@@ -31,7 +31,7 @@ public class Controller{
         view.login(player, world, enemyManager, projectileManager);
         player.login(view, projectileManager, enemyManager);
         world.login(view, model);
-        enemyManager.login(view);
+        enemyManager.login(view, projectileManager);
         projectileManager.login(view);
     }
 
@@ -50,8 +50,9 @@ public class Controller{
         // System.out.println(checkDirection().x + " " + checkDirection().y);
         player.move(checkDirection());
         // world.checkCollision(player.getPosition().copy(), player.getSize());
-        player.moveReal(world.checkCollision(player.getPosition().copy(), player.getSize()));
-
+        player.correctPosition(world.getIntersection(player.getPosition().copy(), player.getSize()));
+        player.getDamage(projectileManager.getPlayerDamage(player.getPosition().copy(), player.getSize()));
+        enemyManager.checkEnemyDamage();
         
         
         //update

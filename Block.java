@@ -27,16 +27,10 @@ public class Block extends Element{
         float pToBLength = (float) Math.sqrt(Math.pow(pToB.x, 2) + Math.pow(pToB.y, 2));
         float minLength = distancetoEdge(pToB.heading()) + size / 2; //Übergabe noch irrelevant
         if(pToBLength < minLength){
-            System.out.println("Intersection!");
-            // System.out.println(pToB.copy().normalize().mult(-minLength));
             return pToB.copy().normalize().mult(pToBLength-minLength);
         } else {
-            // System.out.println(pToB.copy().sub(pToB.copy().normalize().mult(minLength)));
             return new PVector();
         }
-        // System.out.println("pToE: " + pToB);
-        // System.out.println("pToE heading: " + Math.toDegrees(pToB.heading()));
-        // System.out.println("pToE dist: " + Math.sqrt(Math.pow(pToB.x, 2) + Math.pow(pToB.y, 2)));
     } 
     
     public float distancetoEdge(float direction){

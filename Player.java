@@ -63,7 +63,7 @@ public class Player extends Element{
         view.ellipse(position, size, size, rotation);
     }
     
-    public void moveReal(PVector direction){
+    public void correctPosition(PVector direction){
         position.add(direction.copy());
     }
 
@@ -83,6 +83,10 @@ public class Player extends Element{
             projectileManager.addPlayerProjectile(position.copy(),targetDirection, damage, effects);
             System.out.println("Schuss!");
         }
+    }
+    
+    public void getDamage(float damage){
+        health -= damage;
     }
 
     public boolean isCriticalStrike(){

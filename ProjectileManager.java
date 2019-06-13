@@ -32,4 +32,27 @@ public class ProjectileManager extends PApplet{
         PlayerProjectile projectile = new PlayerProjectile(startPosition, direction, damage, effects, view);
         projectiles.add(projectile);
     }
+    
+    public float getPlayerDamage(PVector position, float size){
+        // blocks.get(2).intersects(position.copy(), size);
+        float damage = 0;
+        for(Projectile p : projectiles) {
+            damage += p.intersectsPlayer(position.copy(), size);
+        }
+        return damage;
+    }
+    
+    public float getEnemyDamage(PVector position, float size){
+        // blocks.get(2).intersects(position.copy(), size);
+        float damage = 0;
+        float previous = 0;
+        for(int i = projectiles.size() - 1; i >= 0; i--) {
+            damage += projectiles.get(i).intersectsEnemy(position.copy(), size);
+            if(damage > previous){
+                projectiles.remove(i);
+            }
+            previous = damage;
+        }
+        return damage;
+    }
 }

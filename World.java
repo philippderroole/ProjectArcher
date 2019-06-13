@@ -44,7 +44,7 @@ public class World{
         }
     }
     
-    public PVector checkCollision(PVector position, float size){
+    public PVector getIntersection(PVector position, float size){
         // blocks.get(2).intersects(position.copy(), size);
         PVector p = new PVector();
         for(Block b : blocks) {
