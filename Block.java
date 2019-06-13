@@ -27,14 +27,31 @@ public class Block extends Element{
         float pToBLength = (float) Math.sqrt(Math.pow(pToB.x, 2) + Math.pow(pToB.y, 2));
         float minLength = distancetoEdge(pToB.heading()) + size / 2; //Übergabe noch irrelevant
         if(pToBLength < minLength){
-            return pToB.copy().normalize().mult(pToBLength-minLength);
+            System.out.println("Intersection!");
+            // System.out.println(pToB.copy().normalize().mult(-minLength));
+            return pToB.copy().normalize().mult(pToBLength- minLength);
         } else {
             return new PVector();
         }
     } 
     
     public float distancetoEdge(float direction){
-        return gridSize / 2;
+        float angle = (float) Math.toDegrees(direction);
+         angle -= 180;
+         angle = Math.abs(angle);
+        int i = 0;
+        while(angle > 45) {
+            angle -= 45;
+            i++;
+            
+        }
+        if (i%2==0) {
+                angle = -angle + 45;
+            }
+        angle += 45;
+        return( (float) ((gridSize / 2) / ( Math.sin(Math.toRadians(angle)))));
+        //((gridSize / 2) / (float) Math.sin(Math.toRadians(angle)));
+         // return gridSize / 2;
     }
     
     public PVector getCenterPosition(){
