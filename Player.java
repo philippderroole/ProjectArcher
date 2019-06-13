@@ -23,6 +23,9 @@ public class Player extends Element{
     private float attackspeed;
     private float currentDelay;
     private float movespeed;
+    private boolean moving; //macht diese Variavble sinn? ich denke für das schießen schon zum testen
+    //außerdem kann man dann das target enemy nur dann machen wenn man aufhörtt zu laufen und anfängr zu schießen
+    //und nicht dauerjaft sodass auch mal ein enemy totgeschossen wird
     
     public Player(){
         size = 50;
@@ -31,9 +34,9 @@ public class Player extends Element{
         damage = 100;
         criticalStrikeChance = 10;
         criticalStrikeMultiplier = 2;
-        attackspeed = 0.1f;
+        attackspeed = 0.5f;
         currentDelay = attackspeed * 30;
-        movespeed = 5;
+        movespeed = 8;
     }
 
     public void login(View view, ProjectileManager projectileManager, EnemyManager enemyManager){

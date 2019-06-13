@@ -12,7 +12,6 @@ public class Block extends Element{
     
     public void show(){
         view.rect(position, gridSize, gridSize, 0);
-        System.out.println("hi");
     }
 
     public void showHitbox(){

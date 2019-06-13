@@ -16,7 +16,7 @@ public class EnemyManager{
     public void login(View view){
         this.view = view;
     }
-
+    
     public void update(){
         for(Enemy e : enemies) {
             e.update();
@@ -34,7 +34,7 @@ public class EnemyManager{
         for(int y = 0; y < 20; y++){
             for(int x = 0; x < 20; x++){
                 if (level[y][x].compareTo("s") == 0) {
-                    enemies.add(new Shooter(new PVector(x * gridSize, y * gridSize), view));
+                    enemies.add(new Shooter(new PVector((float)(x+0.5) * gridSize , (float) (y+0.5) * gridSize), view));
                 }
             }
         }
@@ -55,7 +55,7 @@ public class EnemyManager{
                 nearestEnemyPosition = e.getPosition();
             }
         }
-        PVector direction = playerPosition.sub(nearestEnemyPosition);
+        PVector direction = nearestEnemyPosition.sub(playerPosition);
         return direction.normalize();
     }
     

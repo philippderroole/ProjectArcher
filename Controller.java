@@ -41,6 +41,7 @@ public class Controller{
         String[][] level = model.getLevel(1);
         
         world.setup(level);
+        enemyManager.loadEnemies(level);
     }
 
     public void draw(){
