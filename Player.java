@@ -72,11 +72,11 @@ public class Player extends Element{
             position.add(direction.copy().mult(movespeed));
             if (!moving) {
                 moving = true;
-                System.out.println("moving");
+                // System.out.println("moving");
             }
         } else if (moving) {
             moving = false;
-            System.out.println("standing");
+            // System.out.println("standing");
         }
     }
 
@@ -87,7 +87,7 @@ public class Player extends Element{
     public void shoot(){
         if(isCriticalStrike()){
             projectileManager.addPlayerProjectile(position.copy(),targetDirection.copy(), damage * criticalStrikeMultiplier, effects);
-            System.out.println("Kritischer Treffer");
+            System.out.println("Kritischer Schuss!");
         } else {
             projectileManager.addPlayerProjectile(position.copy(),targetDirection, damage, effects);
             System.out.println("Schuss!");
