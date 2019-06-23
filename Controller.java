@@ -33,7 +33,7 @@ public class Controller{
         this.view = view;
         this.model = model;
 
-        view.login(player, world, enemyManager, projectileManager);
+        view.login(player, world, enemyManager, projectileManager, gridSize);
         player.login(view, projectileManager, enemyManager);
         world.login(view, projectileManager);
         enemyManager.login(view, projectileManager);
@@ -48,6 +48,9 @@ public class Controller{
         
         world.setup(level);
         enemyManager.loadEnemies(level);
+        
+        view.setup();
+        
     }
     
     public void nextLevel() {

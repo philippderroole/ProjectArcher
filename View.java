@@ -10,25 +10,45 @@ public class View{
     EnemyManager enemyManager;
     ProjectileManager projectileManager;
 
+    
+    //variables
+    float gridSize;
+    //images
+    PImage field;
+    
     public View(){
+        
+        
 
+    }
+    
+    public void setup() {
+        field = pApplet.loadImage("assets/field.png");
     }
 
     public void login(Model model, Controller controller, PApplet pApplet){
         this.model = model;
         this.controller = controller;
         this.pApplet = pApplet;
+        
+        
     }
 
-    public void login(Player player, World world, EnemyManager enemyManager, ProjectileManager projectileManager){
+    public void login(Player player, World world, EnemyManager enemyManager, ProjectileManager projectileManager, float gridSize){
         this.player = player;
         this.world = world;
         this.enemyManager = enemyManager;
         this.projectileManager = projectileManager;
+        this.gridSize = gridSize;
     }
 
     public void show(){
         pApplet.background(255);
+        for (int y = 0; y < 15; y++) {
+            for (int x = 0; x < 20; x++) {
+                pApplet.image(field, x * gridSize, y * gridSize);
+            }
+        }
 
         world.show();
         player.show();
