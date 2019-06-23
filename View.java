@@ -15,6 +15,7 @@ public class View{
     float gridSize;
     //images
     PImage field;
+    PImage block;
     
     public View(){
         
@@ -24,6 +25,7 @@ public class View{
     
     public void setup() {
         field = pApplet.loadImage("assets/field.png");
+        block = pApplet.loadImage("assets/block.png");
     }
 
     public void login(Model model, Controller controller, PApplet pApplet){
@@ -88,7 +90,31 @@ public class View{
         pApplet.rect(0, 0, width, height);
         pApplet.popMatrix();
     }
-
+    public void rect(PVector position, float width, float height,float rotation, int[] color) {
+        pApplet.pushMatrix();
+        pApplet.translate(position.x, position.y);
+        pApplet.rotate((float) ((rotation * Math.PI) / 180));
+        if (color.length == 3) {
+            pApplet.fill(color[0], color[1], color[2]);
+        }
+        if (color.length == 4) {
+            pApplet.fill(color[0], color[1], color[2], color[3]);
+        }
+        pApplet.rect(0, 0, width, height);
+        pApplet.popMatrix();
+    }
+    
+    public void text(String s, float posX, float posY, int size) {
+        pApplet.fill(255);
+        pApplet.textAlign(pApplet.CENTER, pApplet.CENTER);
+        pApplet.textSize(size);
+        pApplet.text(s, posX, posY);
+    }
+    
+    public void imageBlock(PVector position) {
+        pApplet.image(block, position.x, position.y);
+    }
+    
     public int getWidth() {
         return pApplet.width;
     }
