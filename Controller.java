@@ -68,7 +68,7 @@ public class Controller{
 
         view.show();
        
-
+        System.out.println(pressedKeys);
     }
     
     public void keyPressed(){
@@ -94,6 +94,18 @@ public class Controller{
             direction.add(1, 0);
         }
         if(pressedKeys.contains("" + 40)){ //unten
+            direction.add(0, 1);
+        }
+        if(pressedKeys.contains("" + 65)){ //links
+            direction.add(-1, 0);
+        }
+        if(pressedKeys.contains("" + 87)){ //oben            
+            direction.add(0, -1);
+        }
+        if(pressedKeys.contains("" + 68)){ //rechts
+            direction.add(1, 0);
+        }
+        if(pressedKeys.contains("" + 83)){ //unten
             direction.add(0, 1);
         }
         return direction.normalize();
