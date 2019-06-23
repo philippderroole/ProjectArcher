@@ -68,7 +68,7 @@ public class Controller{
 
         view.show();
        
-        System.out.println(pressedKeys);
+        // System.out.println(pressedKeys);
     }
     
     public void keyPressed(){
