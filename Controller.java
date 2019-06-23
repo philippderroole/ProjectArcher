@@ -9,6 +9,7 @@ public class Controller{
     Model model;
 
     // Variablen
+    private int currentLevel;
     private Player player;
     private World world;
     private float gridSize;
@@ -19,6 +20,7 @@ public class Controller{
     public Controller(){
         
         gridSize = 64;
+        currentLevel = 1;
         projectileManager = new ProjectileManager();
         player = new Player(gridSize);
         world = new World(gridSize);
@@ -41,7 +43,16 @@ public class Controller{
     public void setup(){
         pApplet.frameRate(30);
         
-        String[][] level = model.getLevel(2);
+        String[][] level = model.getLevel(currentLevel);
+        currentLevel++;
+        
+        world.setup(level);
+        enemyManager.loadEnemies(level);
+    }
+    
+    public void nextLevel() {
+        String[][] level = model.getLevel(currentLevel);
+        currentLevel++;
         
         world.setup(level);
         enemyManager.loadEnemies(level);
