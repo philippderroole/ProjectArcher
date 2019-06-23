@@ -37,7 +37,7 @@ public class Model{
 
         System.out.println();
 
-        for (int j = 0; j < 20; j++) {
+        for (int j = 0; j < 15; j++) {
             for (int k= 0; k < 20; k ++) {
                 System.out.print(answer[j][k]);
             }

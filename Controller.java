@@ -9,6 +9,7 @@ public class Controller{
     Model model;
 
     // Variablen
+    private int currentLevel;
     private Player player;
     private World world;
     private float gridSize;
@@ -19,6 +20,7 @@ public class Controller{
     public Controller(){
         
         gridSize = 64;
+        currentLevel = 1;
         projectileManager = new ProjectileManager();
         player = new Player(gridSize);
         world = new World(gridSize);
@@ -41,7 +43,16 @@ public class Controller{
     public void setup(){
         pApplet.frameRate(30);
         
-        String[][] level = model.getLevel(2);
+        String[][] level = model.getLevel(currentLevel);
+        currentLevel++;
+        
+        world.setup(level);
+        enemyManager.loadEnemies(level);
+    }
+    
+    public void nextLevel() {
+        String[][] level = model.getLevel(currentLevel);
+        currentLevel++;
         
         world.setup(level);
         enemyManager.loadEnemies(level);
@@ -68,7 +79,7 @@ public class Controller{
 
         view.show();
        
-
+        // System.out.println(pressedKeys);
     }
     
     public void keyPressed(){
@@ -94,6 +105,18 @@ public class Controller{
             direction.add(1, 0);
         }
         if(pressedKeys.contains("" + 40)){ //unten
+            direction.add(0, 1);
+        }
+        if(pressedKeys.contains("" + 65)){ //links
+            direction.add(-1, 0);
+        }
+        if(pressedKeys.contains("" + 87)){ //oben            
+            direction.add(0, -1);
+        }
+        if(pressedKeys.contains("" + 68)){ //rechts
+            direction.add(1, 0);
+        }
+        if(pressedKeys.contains("" + 83)){ //unten
             direction.add(0, 1);
         }
         return direction.normalize();

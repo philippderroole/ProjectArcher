@@ -28,7 +28,7 @@ public class Player extends Element{
     //und nicht dauerjaft sodass auch mal ein enemy totgeschossen wird
     
     public Player(float size){
-        position = new PVector(100,100);
+        position = new PVector(100,960/2);
         this.size = size;
         maxHealth = 1000;
         health = maxHealth;
