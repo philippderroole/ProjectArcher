@@ -27,9 +27,9 @@ public class Player extends Element{
     //außerdem kann man dann das target enemy nur dann machen wenn man aufhörtt zu laufen und anfängr zu schießen
     //und nicht dauerjaft sodass auch mal ein enemy totgeschossen wird
     
-    public Player(){
+    public Player(float size){
         position = new PVector(100,100);
-        size = 50;
+        this.size = size;
         maxHealth = 1000;
         health = maxHealth;
         damage = 100;
@@ -37,7 +37,7 @@ public class Player extends Element{
         criticalStrikeMultiplier = 2;
         attackspeed = 0.5f;
         currentDelay = attackspeed * 30;
-        movespeed = 8;
+        movespeed = size/6;
     }
 
     public void login(View view, ProjectileManager projectileManager, EnemyManager enemyManager){

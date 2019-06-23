@@ -60,7 +60,8 @@ public class ProjectileManager extends PApplet{
         // blocks.get(2).intersects(position.copy(), size);
         for(int i = projectiles.size() - 1; i >= 0; i--) {
             Projectile p = projectiles.get(i);
-            if(b.intersectsCircle(p.getNextStepPosition(), p.size)){
+            if(b.intersectsCircle(p.getNextStepPosition(), p.size) || 
+               b.intersectsCircle(p.getNextHalfStepPosition(), p.size) ){
                 projectiles.remove(i);
             }
         }

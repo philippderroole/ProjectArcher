@@ -10,8 +10,10 @@ public class World{
     private ArrayList<Block> blocks;
     private float gridSize;
 
-    public World(){
+    public World(float gridSize){
         blocks = new ArrayList<Block>();
+    
+        this.gridSize = gridSize;
     }
 
     public void login(View view, ProjectileManager projectileManager){
@@ -20,7 +22,7 @@ public class World{
     }
 
     public void setup(String[][] level) {
-        gridSize = view.getWidth() / 20;
+        // gridSize = view.getWidth() / 20;
         loadWorld(level);
     }
 
@@ -37,7 +39,7 @@ public class World{
     }
 
     public void loadWorld(String[][] level){
-        for(int y = 0; y < 20; y++){
+        for(int y = 0; y < 15; y++){
             for(int x = 0; x < 20; x++){
                 if (level[y][x].compareTo("1") == 0) {
                     blocks.add(new Block(new PVector(x,y), gridSize, view));

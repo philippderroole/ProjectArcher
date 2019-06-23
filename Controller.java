@@ -11,15 +11,18 @@ public class Controller{
     // Variablen
     private Player player;
     private World world;
+    private float gridSize;
     private EnemyManager enemyManager;
     private ProjectileManager projectileManager;
     private ArrayList<String> pressedKeys;
 
     public Controller(){
+        
+        gridSize = 64;
         projectileManager = new ProjectileManager();
-        player = new Player();
-        world = new World();
-        enemyManager = new EnemyManager();
+        player = new Player(gridSize);
+        world = new World(gridSize);
+        enemyManager = new EnemyManager(gridSize);
         pressedKeys = new ArrayList<String>();
     }
 
@@ -38,7 +41,7 @@ public class Controller{
     public void setup(){
         pApplet.frameRate(30);
         
-        String[][] level = model.getLevel(1);
+        String[][] level = model.getLevel(2);
         
         world.setup(level);
         enemyManager.loadEnemies(level);

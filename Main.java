@@ -21,7 +21,8 @@ public class Main extends PApplet{
     }
 
     public void settings(){ //läuft als zweites
-        size(1000,1000);
+        size(64*20,64*15);
+        // fullScreen();
     }
 
     public void setup(){ //läuft als drittes

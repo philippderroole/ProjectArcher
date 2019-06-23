@@ -56,4 +56,7 @@ public abstract class Projectile extends Element{
     public PVector getNextStepPosition() {
         return position.copy().add(direction.copy().mult(speed));
     }
+    public PVector getNextHalfStepPosition() {
+        return position.copy().add(direction.copy().mult(speed/2));
+    }
 }

@@ -10,8 +10,9 @@ public class EnemyManager{
     private ArrayList<Enemy> enemies;
     private float gridSize;
 
-    public EnemyManager(){
+    public EnemyManager(float gridSize){
         enemies = new ArrayList<Enemy>();
+        this.gridSize = gridSize;
     }
     
     public void login(View view, ProjectileManager projectileManager){
@@ -32,11 +33,10 @@ public class EnemyManager{
     }
     
     public void loadEnemies(String[][] level){
-        gridSize = view.getWidth() / 20;
-        for(int y = 0; y < 20; y++){
+        for(int y = 0; y < 15; y++){
             for(int x = 0; x < 20; x++){
                 if (level[y][x].compareTo("s") == 0) {
-                    enemies.add(new Shooter(new PVector((float)(x+0.5) * gridSize , (float) (y+0.5) * gridSize), view));
+                    enemies.add(new Shooter(new PVector((float)(x+0.5) * gridSize , (float) (y+0.5) * gridSize), view, gridSize));
                 }
             }
         }
