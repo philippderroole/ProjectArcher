@@ -71,7 +71,7 @@ public class Controller{
         player.getDamage(projectileManager.getPlayerDamage(player.getPosition().copy(), player.getSize()));
         world.checkBlockProjectileIntersection(); //moomentan nur block-Projectile
         enemyManager.checkEnemyDamage();
-        enemyManager.shoot(player.getPosition());        
+        // enemyManager.shoot(player.getPosition());        
         
         //update
         

@@ -57,18 +57,20 @@ public class Player extends Element{
         } else {
             resetDelay();
         }
-        health -= 0.5;
     }
 
     public void show(){
         view.ellipse(position, size, size, rotation);
         //leben
-        int[] gray = {100,100,100};
-        view.rect(new PVector(position.x-50, position.y-75), 100, 12, 0, gray);
-        int[] green = {150,220,150};
+        int[] color = {100,100,100};
+        view.rect(new PVector(position.x-50, position.y-75), 100, 12, 0, color);
+        color = new int[] {150,220,150};
         int length = (int) (health/maxHealth * 100);
-        view.rect(new PVector(position.x-50, position.y-75), length, 12, 0, green);
-        view.text(String.valueOf(health), position.x, position.y - 80, 20);
+        view.rect(new PVector(position.x-50, position.y-75), length, 12, 0, color);
+        color = new int[] {0, 0, 0};
+        view.text(String.valueOf(health), position.x+2, position.y - 78, 20, color);
+        color = new int[] {255, 255, 255};
+        view.text(String.valueOf(health), position.x, position.y - 80, 20, color);
     }
 
     public void correctPosition(PVector direction){

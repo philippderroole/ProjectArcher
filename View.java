@@ -104,8 +104,9 @@ public class View{
         pApplet.popMatrix();
     }
     
-    public void text(String s, float posX, float posY, int size) {
-        pApplet.fill(255);
+    public void text(String s, float posX, float posY, int size, int[] color) {
+        pApplet.stroke(3);
+        pApplet.fill(color[0], color[1], color[2]);
         pApplet.textAlign(pApplet.CENTER, pApplet.CENTER);
         pApplet.textSize(size);
         pApplet.text(s, posX, posY);

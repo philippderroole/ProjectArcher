@@ -4,7 +4,17 @@ public class EnemyProjectile extends Projectile{
 
     
     public EnemyProjectile(PVector startPosition, PVector direction, float damage, View view){
-        size = 10;
+        speed = 1;
+        
+        position = startPosition;
+        this.direction = direction;
+        this.view = view;
+    }
+    
+    
+    public void show(){
+        int[] color = {255, 100, 100};
+        view.ellipse(position, 10, 10, 0, color);
     }
     
     public float intersectsPlayer(PVector position, float size){

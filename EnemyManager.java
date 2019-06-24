@@ -28,7 +28,7 @@ public class EnemyManager{
     
     public void shoot(PVector pos){
         for(Enemy e : enemies) {
-            e.shoot(pos);
+            e.shoot(pos.copy());
         }
     }
 
