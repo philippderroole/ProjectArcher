@@ -26,9 +26,10 @@ public class Shooter extends Enemy{
     }
     
     
-    public void shoot(PVector position) {
+    public void shoot(PVector targetDirection) {
         if (currentDelay <= 0) {
-            targetDirection = position.sub(this.position).normalize();
+            targetDirection.sub(this.position);
+            targetDirection.normalize();
             projectileManager.addEnemyProjectile(this.position.copy(),targetDirection, damage);
         }
         currentDelay--;

@@ -4,7 +4,7 @@ public class EnemyProjectile extends Projectile{
 
     
     public EnemyProjectile(PVector startPosition, PVector direction, float damage, View view){
-        speed = 1;
+        speed = 10;
         
         position = startPosition;
         this.direction = direction;
