@@ -25,6 +25,12 @@ public class EnemyManager{
             e.update();
         }
     }
+    
+    public void shoot(PVector pos){
+        for(Enemy e : enemies) {
+            e.shoot(pos);
+        }
+    }
 
     public void show(){
         for(Enemy e : enemies) {
@@ -36,7 +42,7 @@ public class EnemyManager{
         for(int y = 0; y < 15; y++){
             for(int x = 0; x < 20; x++){
                 if (level[y][x].compareTo("s") == 0) {
-                    enemies.add(new Shooter(new PVector((float)(x+0.5) * gridSize , (float) (y+0.5) * gridSize), view, gridSize));
+                    enemies.add(new Shooter(new PVector((float)(x+0.5) * gridSize , (float) (y+0.5) * gridSize), view, projectileManager, gridSize));
                 }
             }
         }
