@@ -64,7 +64,7 @@ public class Controller{
         String[][] level = model.getLevel(currentLevel);
         currentLevel++;
 
-        if (level == null) {
+        if (level[0][0] == null) {
             currentLevel = 1;  
             level = model.getLevel(currentLevel);
         }
