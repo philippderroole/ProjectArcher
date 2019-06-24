@@ -5,7 +5,7 @@ public class EnemyManager{
     //Klassen zum Anmelden
     View view;
     ProjectileManager projectileManager;
-    
+
     //Variablen
     private ArrayList<Enemy> enemies;
     private float gridSize;
@@ -14,18 +14,18 @@ public class EnemyManager{
         enemies = new ArrayList<Enemy>();
         this.gridSize = gridSize;
     }
-    
+
     public void login(View view, ProjectileManager projectileManager){
         this.view = view;
         this.projectileManager = projectileManager;
     }
-    
+
     public void update(){
         for(Enemy e : enemies) {
             e.update();
         }
     }
-    
+
     public void shoot(PVector pos){
         for(Enemy e : enemies) {
             e.shoot(pos.copy());
@@ -37,7 +37,7 @@ public class EnemyManager{
             e.show();
         }
     }
-    
+
     public void loadEnemies(String[][] level){
         for(int y = 0; y < 15; y++){
             for(int x = 0; x < 20; x++){
@@ -47,11 +47,11 @@ public class EnemyManager{
             }
         }
     }
-    
+
     public ArrayList getEnemies() {
         return enemies;
     }
-    
+
     public PVector getNearestEnemyDirection(PVector playerPosition){
         PVector nearestEnemyPosition = new PVector();
         float minDistance = (float) Math.pow(2,31);
@@ -66,13 +66,26 @@ public class EnemyManager{
         PVector direction = nearestEnemyPosition.sub(playerPosition);
         return direction.normalize();
     }
-    
+
     public void checkEnemyDamage(){
-        for(Enemy e : enemies) {
-            projectileManager.getEnemyDamage(e.position.copy(), e.getSize());
+        for(int i = enemies.size() - 1; i >= 0; i--) {
+            Enemy e = enemies.get(i);
+
+            e.getDamage(projectileManager.getEnemyDamage(e.position.copy(), e.getSize()));
+            if (e.getHealth() <= 0) {
+                enemies.remove(e);
+            }
         }
+
     }
-    
+
+    public boolean checkEnd() {
+        if (enemies.isEmpty())
+            return true;
+        else 
+            return false;
+    }
+
     public boolean isEnemy(){
         if(enemies.isEmpty()){
             return false;

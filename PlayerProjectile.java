@@ -15,7 +15,8 @@ public class PlayerProjectile extends Projectile{
     
     
     public void show(){
-        view.ellipse(position, 10, 10, 0);
+        int[] color = {200, 200, 220};
+        view.ellipse(position, 10, 10, 0, color);
     }
     
     public float intersectsEnemy(PVector position, float size){

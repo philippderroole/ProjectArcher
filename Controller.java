@@ -16,9 +16,9 @@ public class Controller{
     private EnemyManager enemyManager;
     private ProjectileManager projectileManager;
     private ArrayList<String> pressedKeys;
+    private Main main;
 
-    public Controller(){
-        
+    public Controller(Main main){
         gridSize = 64;
         currentLevel = 1;
         projectileManager = new ProjectileManager();
@@ -26,6 +26,12 @@ public class Controller{
         world = new World(gridSize);
         enemyManager = new EnemyManager(gridSize);
         pressedKeys = new ArrayList<String>();
+
+        this.main = main;
+    }
+
+    public void restart() {
+
     }
 
     public void login(PApplet pApplet, View view, Model model){
@@ -42,23 +48,32 @@ public class Controller{
 
     public void setup(){
         pApplet.frameRate(30);
-        
+
+        currentLevel = 1;
         String[][] level = model.getLevel(currentLevel);
         currentLevel++;
-        
+
         world.setup(level);
         enemyManager.loadEnemies(level);
-        
+
         view.setup();
-        
+
     }
-    
+
     public void nextLevel() {
         String[][] level = model.getLevel(currentLevel);
         currentLevel++;
-        
+
+        if (level == null) {
+            currentLevel = 1;  
+            level = model.getLevel(currentLevel);
+        }
+
         world.setup(level);
         enemyManager.loadEnemies(level);
+        projectileManager.killProjectiles();
+
+        player.setPosition(new PVector(100,960/2));
     }
 
     public void draw(){
@@ -71,33 +86,44 @@ public class Controller{
         player.getDamage(projectileManager.getPlayerDamage(player.getPosition().copy(), player.getSize()));
         world.checkBlockProjectileIntersection(); //moomentan nur block-Projectile
         enemyManager.checkEnemyDamage();
-        // enemyManager.shoot(player.getPosition());    //geht noch nicht
-        
+        enemyManager.shoot(player.getPosition());    //geht noch nicht
+
         //update
-        
         world.update();
         enemyManager.update();
         projectileManager.update();
         player.update();
 
         view.show();
-       
-        // System.out.println(pressedKeys);
+        // check player death
+        if (player.isDead()) {
+            reset();
+        }
+        //check if player has won
+        if (enemyManager.checkEnd()) {
+            nextLevel();
+        }
     }
-    
+
+    public void reset() {
+        player = null;
+
+        // setup();
+    }
+
     public void keyPressed(){
         if(!pressedKeys.contains("" + pApplet.keyCode)){        
             pressedKeys.add("" + pApplet.keyCode);
         }
     }
-    
+
     public void keyReleased(){
         pressedKeys.remove("" + pApplet.keyCode);
     }
-    
+
     public PVector checkDirection(){
         PVector direction = new PVector(0,0);
-        
+
         if(pressedKeys.contains("" + 37)){ //links
             direction.add(-1, 0);
         }

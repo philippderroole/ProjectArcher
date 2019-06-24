@@ -22,6 +22,10 @@ public class Model{
         int i = 0;
 
         levelFile = new File("level" + level + ".txt");
+        if (levelFile == null) {
+            System.out.println("GEWONNEN!");
+            return null;
+        }
 
         try {
             BufferedReader fileReader = new BufferedReader( new FileReader(levelFile));

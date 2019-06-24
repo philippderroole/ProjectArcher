@@ -60,17 +60,18 @@ public class Player extends Element{
     }
 
     public void show(){
-        view.ellipse(position, size, size, rotation);
+        int[] color = {255,255,255};
+        view.ellipse(position, size, size, rotation, color);
         //leben
-        int[] color = {100,100,100};
+        color = new int [] {100,100,100};
         view.rect(new PVector(position.x-50, position.y-75), 100, 12, 0, color);
         color = new int[] {150,220,150};
         int length = (int) (health/maxHealth * 100);
         view.rect(new PVector(position.x-50, position.y-75), length, 12, 0, color);
         color = new int[] {0, 0, 0};
-        view.text(String.valueOf(health), position.x+2, position.y - 78, 20, color);
+        view.text(String.valueOf((int) health), position.x+2, position.y - 78, 20, color);
         color = new int[] {255, 255, 255};
-        view.text(String.valueOf(health), position.x, position.y - 80, 20, color);
+        view.text(String.valueOf((int) health), position.x, position.y - 80, 20, color);
     }
 
     public void correctPosition(PVector direction){
@@ -108,13 +109,14 @@ public class Player extends Element{
         health -= damage;
         if (health <= 0) {
             health = 0;
-            die();
         }
-        
     }
-    
-    public void die() {
-        System.out.println("tot");
+
+    public boolean isDead() {
+        if (health <= 0)
+            return true;
+        else 
+            return false;
     }
 
     public boolean isCriticalStrike(){

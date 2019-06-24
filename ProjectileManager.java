@@ -27,26 +27,39 @@ public class ProjectileManager extends PApplet{
             p.show();
         }
     }
+    
+    public void killProjectiles() {
+        projectiles = new ArrayList<Projectile>();
+    }
 
     public void addPlayerProjectile(PVector startPosition, PVector direction, float damage,String[] effects){
         PlayerProjectile projectile = new PlayerProjectile(startPosition, direction, damage, effects, view);
         projectiles.add(projectile);
     }
-    
+
     public void addEnemyProjectile(PVector startPosition, PVector direction, float damage){
         EnemyProjectile projectile = new EnemyProjectile(startPosition, direction, damage, view);
         projectiles.add(projectile);
     }
-    
+
     public float getPlayerDamage(PVector position, float size){
         // blocks.get(2).intersects(position.copy(), size);
         float damage = 0;
-        for(Projectile p : projectiles) {
-            damage += p.intersectsPlayer(position.copy(), size);
+        for(int i = projectiles.size() -1; i >= 0; i --) {
+            Projectile p = projectiles.get(i);
+            if (p instanceof EnemyProjectile) {
+                float addDamage = p.intersectsPlayer(position.copy(), size);
+                damage += addDamage;
+                if (addDamage > 0) {
+                    projectiles.remove(i);
+                }
+            }
         }
         return damage;
+        
+        
     }
-    
+
     public float getEnemyDamage(PVector position, float size){
         // blocks.get(2).intersects(position.copy(), size);
         float damage = 0;
@@ -60,13 +73,13 @@ public class ProjectileManager extends PApplet{
         }
         return damage;
     }
-    
+
     public void checkBlocks(Block b){
         // blocks.get(2).intersects(position.copy(), size);
         for(int i = projectiles.size() - 1; i >= 0; i--) {
             Projectile p = projectiles.get(i);
             if(b.intersectsCircle(p.getNextStepPosition(), p.size) || 
-               b.intersectsCircle(p.getNextHalfStepPosition(), p.size) ){
+            b.intersectsCircle(p.getNextHalfStepPosition(), p.size) ){
                 projectiles.remove(i);
             }
         }
