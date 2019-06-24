@@ -9,9 +9,14 @@ public class World{
     //Variablen
     private ArrayList<Block> blocks;
     private float gridSize;
+    
+    
+    
 
     public World(float gridSize){
         blocks = new ArrayList<Block>();
+        
+        
     
         this.gridSize = gridSize;
     }

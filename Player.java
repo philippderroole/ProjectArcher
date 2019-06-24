@@ -26,7 +26,7 @@ public class Player extends Element{
     private boolean moving; //macht diese Variavble sinn? ich denke für das schießen schon zum testen
     //außerdem kann man dann das target enemy nur dann machen wenn man aufhörtt zu laufen und anfängr zu schießen
     //und nicht dauerjaft sodass auch mal ein enemy totgeschossen wird
-    
+
     public Player(float size){
         position = new PVector(100,960/2);
         this.size = size;
@@ -58,11 +58,21 @@ public class Player extends Element{
             resetDelay();
         }
     }
-    
+
     public void show(){
         view.ellipse(position, size, size, rotation);
+        //leben
+        int[] color = {100,100,100};
+        view.rect(new PVector(position.x-50, position.y-75), 100, 12, 0, color);
+        color = new int[] {150,220,150};
+        int length = (int) (health/maxHealth * 100);
+        view.rect(new PVector(position.x-50, position.y-75), length, 12, 0, color);
+        color = new int[] {0, 0, 0};
+        view.text(String.valueOf(health), position.x+2, position.y - 78, 20, color);
+        color = new int[] {255, 255, 255};
+        view.text(String.valueOf(health), position.x, position.y - 80, 20, color);
     }
-    
+
     public void correctPosition(PVector direction){
         position.add(direction.copy());
     }
@@ -93,9 +103,18 @@ public class Player extends Element{
             System.out.println("Schuss!");
         }
     }
-    
+
     public void getDamage(float damage){
         health -= damage;
+        if (health <= 0) {
+            health = 0;
+            die();
+        }
+        
+    }
+    
+    public void die() {
+        System.out.println("tot");
     }
 
     public boolean isCriticalStrike(){
@@ -110,7 +129,7 @@ public class Player extends Element{
     public void resetDelay(){
         currentDelay = attackspeed * 30;
     }
-    
+
     public float getSize(){
         return size;
     }

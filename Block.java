@@ -11,7 +11,8 @@ public class Block extends Element{
     }
     
     public void show(){
-        view.rect(position, gridSize, gridSize, 0);
+        // view.rect(position, gridSize, gridSize, 0);
+        view.imageBlock(position);
     }
 
     public void showHitbox(){
