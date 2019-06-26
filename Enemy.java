@@ -13,10 +13,13 @@ public abstract class Enemy extends Element{
     protected PVector targetDirection;
 
     protected float damage;
+    
+    protected float moveSpeed;
+    protected PVector moveDir;
 
     public Enemy(){
     }
-    public void shoot(PVector pos) {
+    public void attack(PVector pos) {
     }
     
     public void show(){
@@ -28,13 +31,17 @@ public abstract class Enemy extends Element{
         //leben
         int[] color = {100,100,100};
         view.rect(new PVector(position.x-50, position.y-75), 100, 12, 0, color);
-        color = new int[] {150,220,150};
+        color = new int[] {200,130,130};
         int length = (int) (health/maxHealth * 100);
         view.rect(new PVector(position.x-50, position.y-75), length, 12, 0, color);
         // color = new int[] {0, 0, 0};
         // view.text(String.valueOf((int) health), position.x+2, position.y - 78, 20, color);
         // color = new int[] {255, 255, 255};
         // view.text(String.valueOf((int) health), position.x, position.y - 80, 20, color);
+    }
+    
+    public void correctPosition(PVector direction){
+        position.add(direction.copy());
     }
 
     public void getDamage(float damage) {

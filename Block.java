@@ -23,7 +23,7 @@ public class Block extends Element{
         this.position = new PVector(gridPosition.x * gridSize, gridPosition.y * gridSize);
     }
     
-    public PVector intersectsPlayer(PVector position, float size){
+    public PVector correctIntersectsCircle(PVector position, float size){
         PVector pToB = getCenterPosition().sub(position);
         float pToBLength = (float) Math.sqrt(Math.pow(pToB.x, 2) + Math.pow(pToB.y, 2));
         float minLength = distancetoEdge(pToB.heading()) + size / 2; //Übergabe noch irrelevant

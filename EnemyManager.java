@@ -4,6 +4,7 @@ import java.util.*;
 public class EnemyManager{
     //Klassen zum Anmelden
     View view;
+    World world;
     ProjectileManager projectileManager;
 
     //Variablen
@@ -15,20 +16,23 @@ public class EnemyManager{
         this.gridSize = gridSize;
     }
 
-    public void login(View view, ProjectileManager projectileManager){
+    public void login(View view, ProjectileManager projectileManager, World world){
         this.view = view;
         this.projectileManager = projectileManager;
+        this.world = world;
     }
 
     public void update(){
         for(Enemy e : enemies) {
             e.update();
+            
+            e.correctPosition(world.getIntersection(e.getPosition().copy(), e.getSize()));
         }
     }
 
-    public void shoot(PVector pos){
+    public void attack(PVector pos){
         for(Enemy e : enemies) {
-            e.shoot(pos.copy());
+            e.attack(pos.copy());
         }
     }
 
@@ -42,7 +46,11 @@ public class EnemyManager{
         for(int y = 0; y < 15; y++){
             for(int x = 0; x < 20; x++){
                 if (level[y][x].compareTo("s") == 0) {
-                    enemies.add(new Shooter(new PVector((float)(x+0.5) * gridSize , (float) (y+0.5) * gridSize), view, projectileManager, gridSize));
+                    enemies.add(new Shooter(new PVector((float)(x+0.5) * gridSize , (float) (y+0.5) * gridSize), 
+                    view, projectileManager, gridSize));
+                } else if (level[y][x].compareTo("m") == 0) {
+                    enemies.add(new Mover(new PVector((float)(x+0.5) * gridSize , (float) (y+0.5) * gridSize), 
+                    view, projectileManager, gridSize));
                 }
             }
         }

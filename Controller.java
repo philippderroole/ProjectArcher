@@ -42,7 +42,7 @@ public class Controller{
         view.login(player, world, enemyManager, projectileManager, gridSize);
         player.login(view, projectileManager, enemyManager);
         world.login(view, projectileManager);
-        enemyManager.login(view, projectileManager);
+        enemyManager.login(view, projectileManager, world);
         projectileManager.login(view);
     }
 
@@ -88,7 +88,7 @@ public class Controller{
         player.getDamage(projectileManager.getPlayerDamage(player.getPosition().copy(), player.getSize()));
         world.checkBlockProjectileIntersection(); //moomentan nur block-Projectile
         enemyManager.checkEnemyDamage();
-        enemyManager.shoot(player.getPosition());    //geht noch nicht
+        enemyManager.attack(player.getPosition());    //geht noch nicht
 
         //update
         world.update();

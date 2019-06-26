@@ -29,8 +29,8 @@ public class Shooter extends Enemy{
         showHealthbar();
     }
     
-    
-    public void shoot(PVector targetDirection) {
+    //shooot
+    public void attack(PVector targetDirection) {
         if (currentDelay <= 0) {
             // System.out.println("Feindbeschuss!!");
             targetDirection.sub(this.position);

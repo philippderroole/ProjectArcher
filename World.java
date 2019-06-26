@@ -62,7 +62,7 @@ public class World{
         // blocks.get(2).intersects(position.copy(), size);
         PVector p = new PVector();
         for(Block b : blocks) {
-            p.add(b.intersectsPlayer(position.copy(), size));
+            p.add(b.correctIntersectsCircle(position.copy(), size));
         }
         return p;
     }

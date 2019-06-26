@@ -35,7 +35,7 @@ public class Player extends Element{
         damage = 100;
         criticalStrikeChance = 10;
         criticalStrikeMultiplier = 2;
-        attackspeed = 0.2f;
+        attackspeed = 0.5f;
         currentDelay = attackspeed * 30;
         movespeed = size/6;
     }
