@@ -11,7 +11,7 @@ public class Main extends PApplet{
         pApplet = this;
         model = new Model();
         view = new View();
-        controller = new Controller(this);
+        controller = new Controller();
 
         login();
     }

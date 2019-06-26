@@ -16,18 +16,16 @@ public class Controller{
     private EnemyManager enemyManager;
     private ProjectileManager projectileManager;
     private ArrayList<String> pressedKeys;
-    private Main main;
 
-    public Controller(Main main){
+    public Controller(){
         gridSize = 64;
         currentLevel = 1;
+        
         projectileManager = new ProjectileManager();
         player = new Player(gridSize);
         world = new World(gridSize);
         enemyManager = new EnemyManager(gridSize);
         pressedKeys = new ArrayList<String>();
-
-        this.main = main;
     }
 
     public void restart() {
