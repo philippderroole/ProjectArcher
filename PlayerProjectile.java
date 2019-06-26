@@ -5,7 +5,7 @@ public class PlayerProjectile extends Projectile{
 
     
     public PlayerProjectile(PVector startPosition, PVector direction, float damage, String[] effects, View view){
-        speed = 20;
+        speed = 25;
         
         position = startPosition;
         this.direction = direction;

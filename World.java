@@ -53,6 +53,11 @@ public class World{
         }
     }
     
+    public void clearWorld() {
+        blocks = new ArrayList<Block>();
+
+    }  
+    
     public PVector getIntersection(PVector position, float size){
         // blocks.get(2).intersects(position.copy(), size);
         PVector p = new PVector();

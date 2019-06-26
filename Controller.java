@@ -69,6 +69,8 @@ public class Controller{
             level = model.getLevel(currentLevel);
         }
 
+        
+        world.clearWorld();
         world.setup(level);
         enemyManager.loadEnemies(level);
         projectileManager.killProjectiles();

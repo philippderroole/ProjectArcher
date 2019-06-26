@@ -11,7 +11,7 @@ public class Shooter extends Enemy{
         maxHealth = 200;
         health = maxHealth;
         damage = 50;
-        maxDelay = 40;
+        maxDelay = random(1) * 10 + 35;
         currentDelay = maxDelay;
         
         this.projectileManager = projectileManager;
