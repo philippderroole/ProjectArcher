@@ -74,7 +74,7 @@ public class ProjectileManager extends PApplet{
         return damage;
     }
 
-    public void checkBlocks(Block b){
+    public void checkBlocks(Obstacle b){
         // blocks.get(2).intersects(position.copy(), size);
         for(int i = projectiles.size() - 1; i >= 0; i--) {
             Projectile p = projectiles.get(i);

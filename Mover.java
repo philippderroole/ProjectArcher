@@ -30,10 +30,11 @@ public class Mover extends Enemy{
     }
 
     public void show(){
-        int[] color = {120,150,100};
-        view.ellipse(position, size, size, 0, color);
+        // int[] color = {120,150,100};
+        // view.ellipse(position, size, size, 0, color);
         // System.out.println("show" + size);
 
+        view.image("spider", position.copy().sub(new PVector(view.getGridSize()/2, view.getGridSize()/2)));
         showHealthbar();
     }
 

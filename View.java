@@ -10,30 +10,29 @@ public class View{
     EnemyManager enemyManager;
     ProjectileManager projectileManager;
 
-    
     //variables
     float gridSize;
     //images
     PImage field;
     PImage block;
-    
+    PImage water;
+    PImage spider;
+
     public View(){
-        
-        
 
     }
-    
     public void setup() {
         field = pApplet.loadImage("assets/field_2.png");
         block = pApplet.loadImage("assets/block.png");
+        water = pApplet.loadImage("assets/water.png");
+        spider = pApplet.loadImage("assets/enemy_spider.png");
     }
 
     public void login(Model model, Controller controller, PApplet pApplet){
         this.model = model;
         this.controller = controller;
         this.pApplet = pApplet;
-        
-        
+
     }
 
     public void login(Player player, World world, EnemyManager enemyManager, ProjectileManager projectileManager, float gridSize){
@@ -90,6 +89,7 @@ public class View{
         pApplet.rect(0, 0, width, height);
         pApplet.popMatrix();
     }
+
     public void rect(PVector position, float width, float height,float rotation, int[] color) {
         pApplet.pushMatrix();
         pApplet.translate(position.x, position.y);
@@ -103,7 +103,7 @@ public class View{
         pApplet.rect(0, 0, width, height);
         pApplet.popMatrix();
     }
-    
+
     public void text(String s, float posX, float posY, int size, int[] color) {
         pApplet.stroke(3);
         pApplet.fill(color[0], color[1], color[2]);
@@ -111,16 +111,31 @@ public class View{
         pApplet.textSize(size);
         pApplet.text(s, posX, posY);
     }
-    
-    public void imageBlock(PVector position) {
-        pApplet.image(block, position.x, position.y);
+
+    public void image(String s, PVector position) {
+        switch (s) {
+            case "block":
+            pApplet.image(block, position.x, position.y);
+            break;
+            case "water":
+            pApplet.image(water, position.x, position.y);
+            break;
+            case "spider":
+            pApplet.image(spider, position.x, position.y);
+            break;
+        }
+
     }
-    
+
     public int getWidth() {
         return pApplet.width;
     }
 
     public int getHeight() {
         return pApplet.height;
+    }
+    
+    public float getGridSize() {
+        return gridSize;
     }
 }

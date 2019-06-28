@@ -1,15 +1,15 @@
 import processing.core.*;
 
-public class Block extends Obstacle{
+public class Water extends Obstacle{
     
     private float gridSize;
     private String image;
     
-    public Block(PVector position, String image, float gridSize, View view){
+    public Water(PVector position, String image, float gridSize, View view){
         this.gridSize = gridSize;
         setPosition(position);
         this.view = view;
-        this.image = "block";
+        this.image = "water";
     }
     
     public void show(){
@@ -57,16 +57,7 @@ public class Block extends Obstacle{
     }
     
     public boolean intersectsCircle(PVector position, float size){
-        PVector pToB = getCenterPosition().sub(position);
-        float pToBLength = (float) Math.sqrt(Math.pow(pToB.x, 2) + Math.pow(pToB.y, 2));
-        float minLength = distancetoEdge(pToB.heading()) + size / 2; //Übergabe noch irrelevant
-        if(pToBLength < minLength){
-            // // // System.out.println("Intersection!");
-            // System.out.println(pToB.copy().normalize().mult(-minLength));
-            return true;
-        } else {
-            return false;
-        }
+        return false;
     } 
     
     public PVector getCenterPosition(){

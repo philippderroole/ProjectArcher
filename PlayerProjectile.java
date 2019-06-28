@@ -6,6 +6,7 @@ public class PlayerProjectile extends Projectile{
     
     public PlayerProjectile(PVector startPosition, PVector direction, float damage, String[] effects, View view){
         speed = 25;
+        size = 15;
         
         position = startPosition;
         this.direction = direction;
@@ -16,7 +17,7 @@ public class PlayerProjectile extends Projectile{
     
     public void show(){
         int[] color = {200, 200, 220};
-        view.ellipse(position, 10, 10, 0, color);
+        view.ellipse(position, size, size, 0, color);
     }
     
     public float intersectsEnemy(PVector position, float size){

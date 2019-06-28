@@ -7,14 +7,14 @@ public class World{
     ProjectileManager projectileManager;
 
     //Variablen
-    private ArrayList<Block> blocks;
+    private ArrayList<Obstacle> obstacles;
     private float gridSize;
     
     
     
 
     public World(float gridSize){
-        blocks = new ArrayList<Block>();
+        obstacles = new ArrayList<Obstacle>();
         
         
     
@@ -32,13 +32,13 @@ public class World{
     }
 
     public void update(){
-        for(Block b : blocks) {
+        for(Obstacle b : obstacles) {
             b.update();
         }
     }
 
     public void show(){
-        for(Block b : blocks) {
+        for(Obstacle b : obstacles) {
             b.show();
         }
     }
@@ -47,28 +47,31 @@ public class World{
         for(int y = 0; y < 15; y++){
             for(int x = 0; x < 20; x++){
                 if (level[y][x].compareTo("1") == 0) {
-                    blocks.add(new Block(new PVector(x,y), gridSize, view));
+                    obstacles.add(new Block(new PVector(x,y), "block", gridSize, view));
+                }
+                if (level[y][x].compareTo("w") == 0) {
+                    obstacles.add(new Water(new PVector(x,y), "water", gridSize, view));
                 }
             }
         }
     }
     
     public void clearWorld() {
-        blocks = new ArrayList<Block>();
+        obstacles = new ArrayList<Obstacle>();
 
     }  
     
     public PVector getIntersection(PVector position, float size){
         // blocks.get(2).intersects(position.copy(), size);
         PVector p = new PVector();
-        for(Block b : blocks) {
+        for(Obstacle b : obstacles) {
             p.add(b.correctIntersectsCircle(position.copy(), size));
         }
         return p;
     }
     
     public void checkBlockProjectileIntersection(){
-        for(Block b : blocks) {
+        for(Obstacle b : obstacles) {
             projectileManager.checkBlocks(b);
         }
     }

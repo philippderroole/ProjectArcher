@@ -11,6 +11,7 @@ public abstract class Projectile extends Element{
 
     public Projectile(){
         damage = 100;
+        
     }
     
     public void update(){
