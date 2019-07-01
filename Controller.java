@@ -47,7 +47,7 @@ public class Controller{
     }
 
     public void setup(){
-        pApplet.frameRate(30);
+        pApplet.frameRate(3000);
 
         currentLevel = 1;
         String[][] level = model.getLevel(currentLevel);
@@ -105,13 +105,13 @@ public class Controller{
             reset();
         }
         //check if player has won
-        if (enemyManager.isEnemy()) {
+        if (!enemyManager.isEnemy()) {
             nextLevel();
         }
     }
 
     public void reset() {
-        player = null;
+        // player = null;
 
         // setup();
     }

@@ -30,6 +30,7 @@ public class Main extends PApplet{
     }
 
     public void draw(){
+        // println(frameRate);
         controller.draw();
     }
     
