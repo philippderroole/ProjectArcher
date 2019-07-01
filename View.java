@@ -23,9 +23,9 @@ public class View{
     }
     
     public void setup() {
-        field = pApplet.loadImage("assets/field_2.png");
+        field = pApplet.loadImage("assets/field_3.png");
         block = pApplet.loadImage("assets/block.png");
-        water = pApplet.loadImage("assets/water.png");
+        water = pApplet.loadImage("assets/water_2.png");
         spider = pApplet.loadImage("assets/enemy_spider.png");
     }
 
