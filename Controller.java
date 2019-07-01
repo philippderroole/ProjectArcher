@@ -82,8 +82,10 @@ public class Controller{
         // System.out.println(checkDirection().x + " " + checkDirection().y);
         player.move(checkDirection());
         // world.checkCollision(player.getPosition().copy(), player.getSize());
-        player.correctPosition(world.getIntersection(player.getPosition().copy(), player.getSize()));
-        player.getDamage(projectileManager.getPlayerDamage(player.getPosition().copy(), player.getSize()));
+        PVector moveBackVector = world.getIntersection(player.getPosition().copy(), player.getSize());
+        player.correctPosition(moveBackVector);
+        float f = projectileManager.getPlayerDamage(player.getPosition().copy(), player.getSize());
+        player.getDamage(f);
         world.checkBlockProjectileIntersection(); //moomentan nur block-Projectile
         enemyManager.checkEnemyDamage();
         enemyManager.attack(player.getPosition());    //geht noch nicht
