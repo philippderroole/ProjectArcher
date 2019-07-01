@@ -24,11 +24,7 @@ public abstract class Element{
     }
 
     public void look(float angle){ //default right
-        if(angle < 360 && angle > 0){
-            setRotation(angle);
-        } else {
-            setRotation(0);
-        }
+        
     }
 
     public void move(PVector direction){
@@ -58,7 +54,13 @@ public abstract class Element{
         this.position = position;
     }
 
-    public void setRotation(float rotation){
-        this.rotation = rotation;
+    public void setRotation(float angle){
+        if(angle < 360 && angle > 0){
+            this.rotation = angle;
+        } else if(angle >= 360){
+            while(angle >= 360){
+                this.rotation = angle - 360;
+            }
+        }
     }
 }

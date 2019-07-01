@@ -105,7 +105,7 @@ public class Player extends Element{
         }
     }
 
-    public void getDamage(float damage){
+    public void takeDamage(float damage){
         health -= damage;
         if (health <= 0) {
             health = 0;
