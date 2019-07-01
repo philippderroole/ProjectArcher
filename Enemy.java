@@ -16,6 +16,7 @@ public abstract class Enemy extends Element{
     
     protected float moveSpeed;
     protected PVector moveDir;
+    
 
     public Enemy(){
     }

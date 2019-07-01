@@ -112,19 +112,24 @@ public class View{
         pApplet.text(s, posX, posY);
     }
 
-    public void image(String s, PVector position) {
+    public void image(String s, PVector position, float rotation) {
+        pApplet.pushMatrix();
+        pApplet.translate(position.x + gridSize/2, position.y + gridSize/2);
+        pApplet.rotate((float) ((rotation * Math.PI) / 180));
+        pApplet.translate(- gridSize/2, - gridSize/2);
         switch (s) {
             case "block":
-            pApplet.image(block, position.x, position.y);
+            pApplet.image(block, 0,0);
             break;
             case "water":
-            pApplet.image(water, position.x, position.y);
+            pApplet.image(water, 0,0);
             break;
             case "spider":
-            pApplet.image(spider, position.x, position.y);
+            pApplet.image(spider, 0,0);
             break;
         }
 
+        pApplet.popMatrix();
     }
 
     public int getWidth() {

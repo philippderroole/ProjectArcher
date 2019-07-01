@@ -10,7 +10,7 @@ public class Obstacle extends Element{
     
     public void show(){
         // view.rect(position, gridSize, gridSize, 0);
-        view.image(image, position);
+        view.image(image, position, rotation);
     }
 
     public void showHitbox(){
