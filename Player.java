@@ -30,7 +30,7 @@ public class Player extends Element{
     public Player(float size){
         position = new PVector(100,960/2);
         this.size = size;
-        maxHealth = 1500;
+        maxHealth = 2000;
         health = maxHealth;
         damage = 100;
         criticalStrikeChance = 10;
