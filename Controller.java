@@ -47,7 +47,7 @@ public class Controller{
     }
 
     public void setup(){
-        pApplet.frameRate(3000);
+        pApplet.frameRate(30);
 
         currentLevel = 1;
         String[][] level = model.getLevel(currentLevel);
