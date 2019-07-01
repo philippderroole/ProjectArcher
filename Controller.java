@@ -3,6 +3,8 @@ import java.util.*;
 
 public class Controller{
 
+    //test
+    
     // Klassen zum Anmelden
     PApplet pApplet;
     View view;
@@ -77,16 +79,18 @@ public class Controller{
     }
 
     public void draw(){
-        checkDirection();
-
-        // System.out.println(checkDirection().x + " " + checkDirection().y);
-        player.move(checkDirection());
+        player.move(getInputDirection());
         // world.checkCollision(player.getPosition().copy(), player.getSize());
-        player.correctPosition(world.getIntersection(player.getPosition().copy(), player.getSize()));
-        player.getDamage(projectileManager.getPlayerDamage(player.getPosition().copy(), player.getSize()));
-        world.checkBlockProjectileIntersection(); //moomentan nur block-Projectile
-        enemyManager.checkEnemyDamage();
-        enemyManager.attack(player.getPosition());    //geht noch nicht
+        
+        PVector moveBackVector = world.getIntersectionVector(player.getPosition().copy(), player.getSize());
+        player.correctPosition(moveBackVector);
+        
+        float projectileDamage = projectileManager.calculatePlayerDamage(player.getPosition().copy(), player.getSize());
+        player.takeDamage(projectileDamage);
+        
+        world.checkBlockProjectileIntersection();
+        enemyManager.checkIsEnemyHit();
+        enemyManager.attack(player.getPosition());
 
         //update
         world.update();
@@ -95,12 +99,13 @@ public class Controller{
         player.update();
 
         view.show();
+        
         // check player death
         if (player.isDead()) {
             reset();
         }
         //check if player has won
-        if (enemyManager.checkEnd()) {
+        if (enemyManager.isEnemy()) {
             nextLevel();
         }
     }
@@ -121,9 +126,10 @@ public class Controller{
         pressedKeys.remove("" + pApplet.keyCode);
     }
 
-    public PVector checkDirection(){
+    public PVector getInputDirection(){
         PVector direction = new PVector(0,0);
-
+        
+        //arrowkeys
         if(pressedKeys.contains("" + 37)){ //links
             direction.add(-1, 0);
         }
@@ -136,6 +142,8 @@ public class Controller{
         if(pressedKeys.contains("" + 40)){ //unten
             direction.add(0, 1);
         }
+        
+        //wasd
         if(pressedKeys.contains("" + 65)){ //links
             direction.add(-1, 0);
         }
@@ -148,6 +156,8 @@ public class Controller{
         if(pressedKeys.contains("" + 83)){ //unten
             direction.add(0, 1);
         }
-        return direction.normalize();
+        
+        //System.out.println(direction.x + " " + direction.y);
+        return direction.copy().normalize();
     }
 }

@@ -30,7 +30,7 @@ public class Player extends Element{
     public Player(float size){
         position = new PVector(100,960/2);
         this.size = size;
-        maxHealth = 1000;
+        maxHealth = 2000;
         health = maxHealth;
         damage = 100;
         criticalStrikeChance = 10;
@@ -105,7 +105,7 @@ public class Player extends Element{
         }
     }
 
-    public void getDamage(float damage){
+    public void takeDamage(float damage){
         health -= damage;
         if (health <= 0) {
             health = 0;

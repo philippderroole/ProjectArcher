@@ -26,7 +26,7 @@ public class EnemyManager{
         for(Enemy e : enemies) {
             e.update();
             
-            e.correctPosition(world.getIntersection(e.getPosition().copy(), e.getSize()));
+            e.correctPosition(world.getIntersectionVector(e.getPosition().copy(), e.getSize()));
         }
     }
 
@@ -75,7 +75,7 @@ public class EnemyManager{
         return direction.normalize();
     }
 
-    public void checkEnemyDamage(){
+    public void checkIsEnemyHit(){
         for(int i = enemies.size() - 1; i >= 0; i--) {
             Enemy e = enemies.get(i);
 
@@ -85,13 +85,6 @@ public class EnemyManager{
             }
         }
 
-    }
-
-    public boolean checkEnd() {
-        if (enemies.isEmpty())
-            return true;
-        else 
-            return false;
     }
 
     public boolean isEnemy(){

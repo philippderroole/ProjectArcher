@@ -61,7 +61,7 @@ public class World{
 
     }  
     
-    public PVector getIntersection(PVector position, float size){
+    public PVector getIntersectionVector(PVector position, float size){
         // blocks.get(2).intersects(position.copy(), size);
         PVector p = new PVector();
         for(Obstacle b : obstacles) {

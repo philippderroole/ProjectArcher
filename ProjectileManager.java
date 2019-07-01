@@ -42,7 +42,7 @@ public class ProjectileManager extends PApplet{
         projectiles.add(projectile);
     }
 
-    public float getPlayerDamage(PVector position, float size){
+    public float calculatePlayerDamage(PVector position, float size){
         // blocks.get(2).intersects(position.copy(), size);
         float damage = 0;
         for(int i = projectiles.size() -1; i >= 0; i --) {
