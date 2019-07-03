@@ -89,9 +89,12 @@ public class Controller{
         player.takeDamage(projectileDamage);
         
         world.checkBlockProjectileIntersection();
+        
         enemyManager.checkIsEnemyHit();
-        enemyManager.attack(player.getPosition());
-
+        enemyManager.attack(player.getPosition().copy());
+        float collisionDamage = enemyManager.calculateCollisionDamage(player.getPosition(), player.getSize());
+        player.takeDamage(collisionDamage);
+        
         //update
         world.update();
         enemyManager.update();

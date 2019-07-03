@@ -79,12 +79,21 @@ public class EnemyManager{
         for(int i = enemies.size() - 1; i >= 0; i--) {
             Enemy e = enemies.get(i);
 
-            e.getDamage(projectileManager.getEnemyDamage(e.position.copy(), e.getSize()));
+            e.takeDamage(projectileManager.getEnemyDamage(e.position.copy(), e.getSize()));
             if (e.getHealth() <= 0) {
+                e.die();
                 enemies.remove(e);
             }
         }
 
+    }
+    
+    public float calculateCollisionDamage(PVector playerPosition, float size) {
+        float d = 0;
+        for (Enemy e : enemies) {
+            d += e.calculateCollisionDamage(playerPosition.copy(), size);
+        }
+        return d;
     }
 
     public boolean isEnemy(){

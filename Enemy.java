@@ -13,6 +13,7 @@ public abstract class Enemy extends Element{
     protected PVector targetDirection;
 
     protected float damage;
+    protected float collisionDamage;
     
     protected float moveSpeed;
     protected PVector moveDir;
@@ -44,12 +45,26 @@ public abstract class Enemy extends Element{
     public void correctPosition(PVector direction){
         position.add(direction.copy());
     }
+    
+    public float calculateCollisionDamage(PVector playerPosition, float playerSize) {
+        float distance = playerPosition.sub(this.position).mag();
+        float minDistance = playerSize/2 + this.size/2;
+        if (distance < minDistance) {
+            // System.out.println(distance + "; " + minDistance + " " + "collision");
+            return collisionDamage;
+        }
+        return 0;
+    }
 
-    public void getDamage(float damage) {
+    public void takeDamage(float damage) {
         health -= damage;
         if (health <= 0) {
             health = 0;
         }
+    }
+    
+    public void die() {
+        
     }
     
     public float getSize(){

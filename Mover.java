@@ -8,9 +8,10 @@ public class Mover extends Enemy{
         this.view = view;
         this.size = size;
 
-        maxHealth = 150;
+        maxHealth = 300;
         health = maxHealth;
         damage = 50;
+        collisionDamage = 5;
         maxDelay = random(1) * 10 + 35;
         currentDelay = maxDelay;
 
@@ -59,7 +60,7 @@ public class Mover extends Enemy{
     public void attack(PVector targetDirection) {
         if (currentDelay <= 0) {
             targetDirection.sub(this.position);
-            targetDirection.normalize().mult(2);
+            targetDirection.normalize().mult(4);
             moveDir = targetDirection;
             currentDelay = maxDelay;
         }
