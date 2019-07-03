@@ -1,14 +1,14 @@
 import processing.core.*;
 import java.io.*;
 
-public class Model{
+public class Loader{
 
     File levelFile;
 
     View view;
     Controller controller;
 
-    public Model(){
+    public Loader(){
 
     }
 

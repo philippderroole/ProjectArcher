@@ -37,7 +37,7 @@ public class Player extends Element{
         criticalStrikeMultiplier = 2;
         attackspeed = 0.5f;
         currentDelay = attackspeed * 30;
-        movespeed = size/3;
+        movespeed = size/4;
     }
 
     public void login(View view, ProjectileManager projectileManager, EnemyManager enemyManager){

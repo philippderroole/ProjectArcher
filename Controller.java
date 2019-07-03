@@ -8,7 +8,7 @@ public class Controller{
     // Klassen zum Anmelden
     PApplet pApplet;
     View view;
-    Model model;
+    Loader loader;
 
     // Variablen
     private int currentLevel;
@@ -34,10 +34,10 @@ public class Controller{
 
     }
 
-    public void login(PApplet pApplet, View view, Model model){
+    public void login(PApplet pApplet, View view, Loader loader){
         this.pApplet = pApplet;
         this.view = view;
-        this.model = model;
+        loader = loader;
 
         view.login(player, world, enemyManager, projectileManager, gridSize);
         player.login(view, projectileManager, enemyManager);
@@ -50,7 +50,7 @@ public class Controller{
         pApplet.frameRate(30);
 
         currentLevel = 1;
-        String[][] level = model.getLevel(currentLevel);
+        String[][] level = loader.getLevel(currentLevel);
         currentLevel++;
 
         world.setup(level);
@@ -61,12 +61,12 @@ public class Controller{
     }
 
     public void nextLevel() {
-        String[][] level = model.getLevel(currentLevel);
+        String[][] level = loader.getLevel(currentLevel);
         currentLevel++;
 
         if (level[0][0] == null) {
             currentLevel = 1;  
-            level = model.getLevel(currentLevel);
+            level = loader.getLevel(currentLevel);
         }
 
         world.clearWorld();

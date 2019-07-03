@@ -3,7 +3,7 @@ import processing.core.*;
 public class View{
     //Klassen zum Anmelden
     PApplet pApplet;
-    Model model;
+    Loader loader;
     Controller controller;
     Player player;
     World world;
@@ -35,8 +35,8 @@ public class View{
         healthPotion = pApplet.loadImage("assets/potion_hp.png");
     }
 
-    public void login(Model model, Controller controller, PApplet pApplet){
-        this.model = model;
+    public void login(Loader loader, Controller controller, PApplet pApplet){
+        this.loader = loader;
         this.controller = controller;
         this.pApplet = pApplet;
 

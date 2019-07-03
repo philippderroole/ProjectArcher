@@ -3,13 +3,13 @@ import java.util.*;
 
 public class Main extends PApplet{
     private PApplet pApplet;
-    private Model model;
+    private Loader loader;
     private View view;
     private Controller controller;
 
     public Main(){ //läuft als erstes
         pApplet = this;
-        model = new Model();
+        loader = new Loader();
         view = new View();
         controller = new Controller();
 
@@ -43,8 +43,8 @@ public class Main extends PApplet{
     }
 
     public void login() {
-        model.login(view, controller);
-        view.login(model, controller, pApplet);
-        controller.login(pApplet, view, model);
+        loader.login(view, controller);
+        view.login(loader, controller, pApplet);
+        controller.login(pApplet, view, loader);
     }
 }
