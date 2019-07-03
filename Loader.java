@@ -1,7 +1,7 @@
 import processing.core.*;
 import java.io.*;
 
-public class Loader{
+public class Loader implements Load{
 
     File levelFile;
 

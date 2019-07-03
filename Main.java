@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main extends PApplet{
     private PApplet pApplet;
-    private Loader loader;
+    private Load loader;
     private View view;
     private Controller controller;
 

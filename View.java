@@ -3,12 +3,13 @@ import processing.core.*;
 public class View{
     //Klassen zum Anmelden
     PApplet pApplet;
-    Loader loader;
+    Load loader;
     Controller controller;
     Player player;
     World world;
     EnemyManager enemyManager;
     ProjectileManager projectileManager;
+    ItemManager itemManager;
 
     //variables
     float gridSize;
@@ -35,18 +36,19 @@ public class View{
         healthPotion = pApplet.loadImage("assets/potion_hp.png");
     }
 
-    public void login(Loader loader, Controller controller, PApplet pApplet){
+    public void login(Load loader, Controller controller, PApplet pApplet){
         this.loader = loader;
         this.controller = controller;
         this.pApplet = pApplet;
 
     }
 
-    public void login(Player player, World world, EnemyManager enemyManager, ProjectileManager projectileManager, float gridSize){
+    public void login(Player player, World world, EnemyManager enemyManager, ProjectileManager projectileManager, ItemManager itemManager, float gridSize){
         this.player = player;
         this.world = world;
         this.enemyManager = enemyManager;
         this.projectileManager = projectileManager;
+        this.itemManager = itemManager;
         this.gridSize = gridSize;
     }
 
@@ -62,6 +64,7 @@ public class View{
         projectileManager.show();
         player.show();
         enemyManager.show();
+        itemManager.show();
         
         pApplet.image(healthPotion, 64*19, 64*14);
         //ellipse(new PVector(200, 300), 120, 60, 45);

@@ -8,7 +8,7 @@ public class Controller{
     // Klassen zum Anmelden
     PApplet pApplet;
     View view;
-    Loader loader;
+    Load loader;
 
     // Variablen
     private int currentLevel;
@@ -17,6 +17,7 @@ public class Controller{
     private float gridSize;
     private EnemyManager enemyManager;
     private ProjectileManager projectileManager;
+    private ItemManager itemManager;
     private ArrayList<String> pressedKeys;
 
     public Controller(){
@@ -27,6 +28,7 @@ public class Controller{
         player = new Player(gridSize);
         world = new World(gridSize);
         enemyManager = new EnemyManager(gridSize);
+        itemManager = new ItemManager(gridSize);
         pressedKeys = new ArrayList<String>();
     }
 
@@ -34,12 +36,12 @@ public class Controller{
 
     }
 
-    public void login(PApplet pApplet, View view, Loader loader){
+    public void login(PApplet pApplet, View view, Load loader){
         this.pApplet = pApplet;
         this.view = view;
-        loader = loader;
+        this.loader = loader;
 
-        view.login(player, world, enemyManager, projectileManager, gridSize);
+        view.login(player, world, enemyManager, projectileManager, itemManager, gridSize);
         player.login(view, projectileManager, enemyManager);
         world.login(view, projectileManager);
         enemyManager.login(view, projectileManager, world);
@@ -99,7 +101,9 @@ public class Controller{
         world.update();
         enemyManager.update();
         projectileManager.update();
+        itemManager.update();
         player.update();
+        
 
         view.show();
 
