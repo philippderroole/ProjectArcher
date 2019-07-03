@@ -25,7 +25,7 @@ public class EnemyManager{
     public void update(){
         for(Enemy e : enemies) {
             e.update();
-            
+
             e.correctPosition(world.getIntersectionVector(e.getPosition().copy(), e.getSize()));
         }
     }
@@ -47,13 +47,18 @@ public class EnemyManager{
             for(int x = 0; x < 20; x++){
                 if (level[y][x].compareTo("s") == 0) {
                     enemies.add(new Shooter(new PVector((float)(x+0.5) * gridSize , (float) (y+0.5) * gridSize), 
-                    view, projectileManager, gridSize));
+                            view, projectileManager, gridSize));
                 } else if (level[y][x].compareTo("m") == 0) {
                     enemies.add(new Mover(new PVector((float)(x+0.5) * gridSize , (float) (y+0.5) * gridSize), 
-                    view, projectileManager, gridSize));
+                            view, projectileManager, gridSize));
                 }
             }
         }
+    }
+
+    public void  clearEnemies() {
+        enemies = new ArrayList<Enemy>();
+
     }
 
     public ArrayList getEnemies() {
@@ -87,7 +92,7 @@ public class EnemyManager{
         }
 
     }
-    
+
     public float calculateCollisionDamage(PVector playerPosition, float size) {
         float d = 0;
         for (Enemy e : enemies) {

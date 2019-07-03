@@ -4,7 +4,7 @@ import java.util.*;
 public class Controller{
 
     //test
-    
+
     // Klassen zum Anmelden
     PApplet pApplet;
     View view;
@@ -22,7 +22,7 @@ public class Controller{
     public Controller(){
         gridSize = 64;
         currentLevel = 1;
-        
+
         projectileManager = new ProjectileManager();
         player = new Player(gridSize);
         world = new World(gridSize);
@@ -69,9 +69,9 @@ public class Controller{
             level = model.getLevel(currentLevel);
         }
 
-        
         world.clearWorld();
         world.setup(level);
+        enemyManager.clearEnemies();
         enemyManager.loadEnemies(level);
         projectileManager.killProjectiles();
 
@@ -81,20 +81,20 @@ public class Controller{
     public void draw(){
         player.move(getInputDirection());
         // world.checkCollision(player.getPosition().copy(), player.getSize());
-        
+
         PVector moveBackVector = world.getIntersectionVector(player.getPosition().copy(), player.getSize());
         player.correctPosition(moveBackVector);
-        
+
         float projectileDamage = projectileManager.calculatePlayerDamage(player.getPosition().copy(), player.getSize());
         player.takeDamage(projectileDamage);
-        
+
         world.checkBlockProjectileIntersection();
-        
+
         enemyManager.checkIsEnemyHit();
         enemyManager.attack(player.getPosition().copy());
         float collisionDamage = enemyManager.calculateCollisionDamage(player.getPosition(), player.getSize());
         player.takeDamage(collisionDamage);
-        
+
         //update
         world.update();
         enemyManager.update();
@@ -102,7 +102,7 @@ public class Controller{
         player.update();
 
         view.show();
-        
+
         // check player death
         if (player.isDead()) {
             reset();
@@ -123,6 +123,22 @@ public class Controller{
         if(!pressedKeys.contains("" + pApplet.keyCode)){        
             pressedKeys.add("" + pApplet.keyCode);
         }
+
+        //cheats
+        if(pressedKeys.contains("" + 521)){ //plus
+            nextLevel();
+            pressedKeys.remove("" + pApplet.keyCode);
+        }
+        if(pressedKeys.contains("" + 45)){ //minus
+            currentLevel -= 2;
+            nextLevel();
+            pressedKeys.remove("" + pApplet.keyCode);
+        }
+        if(pressedKeys.contains("" + 82)){ //reset
+            currentLevel -= 1;
+            nextLevel();
+            pressedKeys.remove("" + pApplet.keyCode);
+        }
     }
 
     public void keyReleased(){
@@ -131,7 +147,7 @@ public class Controller{
 
     public PVector getInputDirection(){
         PVector direction = new PVector(0,0);
-        
+        // System.out.println(pressedKeys);
         //arrowkeys
         if(pressedKeys.contains("" + 37)){ //links
             direction.add(-1, 0);
@@ -145,7 +161,7 @@ public class Controller{
         if(pressedKeys.contains("" + 40)){ //unten
             direction.add(0, 1);
         }
-        
+
         //wasd
         if(pressedKeys.contains("" + 65)){ //links
             direction.add(-1, 0);
@@ -159,7 +175,7 @@ public class Controller{
         if(pressedKeys.contains("" + 83)){ //unten
             direction.add(0, 1);
         }
-        
+
         //System.out.println(direction.x + " " + direction.y);
         return direction.copy().normalize();
     }
