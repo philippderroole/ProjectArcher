@@ -19,6 +19,7 @@ public class View{
     PImage spider;
     PImage playerProjectile;
     PImage enemyProjectile;
+    PImage healthPotion;
 
     public View(){
 
@@ -31,6 +32,7 @@ public class View{
         spider = pApplet.loadImage("assets/enemy_spider.png");
         playerProjectile = pApplet.loadImage("assets/projectile.png");
         enemyProjectile = pApplet.loadImage("assets/projectile_enemy.png");
+        healthPotion = pApplet.loadImage("assets/potion_hp.png");
     }
 
     public void login(Model model, Controller controller, PApplet pApplet){
@@ -61,6 +63,7 @@ public class View{
         player.show();
         enemyManager.show();
         
+        pApplet.image(healthPotion, 64*19, 64*14);
         //ellipse(new PVector(200, 300), 120, 60, 45);
 
     }
