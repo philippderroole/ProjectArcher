@@ -10,14 +10,22 @@ public class PlayerProjectile extends Projectile{
         
         position = startPosition;
         this.direction = direction;
+        this.damage = damage;
         this.view = view;
+        
+        
+        rotation = (float) Math.toDegrees(direction.copy().heading()) + 90;
+        // System.out.println(rotation);
     }
     
     
     
     public void show(){
-        int[] color = {200, 200, 220};
-        view.ellipse(position, size, size, 0, color);
+        // int[] color = {200, 200, 220};
+        // view.ellipse(position, size, size, 0, color);
+        view.image("playerProjectile", 
+            position.copy().sub(new PVector(view.getGridSize()/2, view.getGridSize()/2)),
+            rotation);
     }
     
     public float intersectsEnemy(PVector position, float size){

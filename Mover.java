@@ -8,7 +8,7 @@ public class Mover extends Enemy{
         this.view = view;
         this.size = size;
 
-        maxHealth = 300;
+        maxHealth = 750;
         health = maxHealth;
         damage = 50;
         collisionDamage = 5;
@@ -28,7 +28,7 @@ public class Mover extends Enemy{
             calculateDir();
         }
         
-        System.out.println(rotation);
+        // System.out.println(rotation);
         if (random(1) > 0.5) {
             move();
         }

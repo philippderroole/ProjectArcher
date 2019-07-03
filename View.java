@@ -17,6 +17,8 @@ public class View{
     PImage block;
     PImage water;
     PImage spider;
+    PImage playerProjectile;
+    PImage enemyProjectile;
 
     public View(){
 
@@ -27,6 +29,8 @@ public class View{
         block = pApplet.loadImage("assets/block.png");
         water = pApplet.loadImage("assets/water_2.png");
         spider = pApplet.loadImage("assets/enemy_spider.png");
+        playerProjectile = pApplet.loadImage("assets/projectile.png");
+        enemyProjectile = pApplet.loadImage("assets/projectile_enemy.png");
     }
 
     public void login(Model model, Controller controller, PApplet pApplet){
@@ -53,9 +57,10 @@ public class View{
         }
 
         world.show();
+        projectileManager.show();
         player.show();
         enemyManager.show();
-        projectileManager.show();
+        
         //ellipse(new PVector(200, 300), 120, 60, 45);
 
     }
@@ -127,6 +132,12 @@ public class View{
             break;
             case "spider":
             pApplet.image(spider, 0,0);
+            break;
+            case "playerProjectile":
+            pApplet.image(playerProjectile, 0,0);
+            break;
+            case "enemyProjectile":
+            pApplet.image(enemyProjectile, 0,0);
             break;
         }
 

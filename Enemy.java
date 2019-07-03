@@ -18,6 +18,8 @@ public abstract class Enemy extends Element{
     protected float moveSpeed;
     protected PVector moveDir;
     
+    protected float dropHealthPotionChance = 100;
+    
 
     public Enemy(){
     }
@@ -64,7 +66,9 @@ public abstract class Enemy extends Element{
     }
     
     public void die() {
-        
+        if (Math.random() <= dropHealthPotionChance/100) {
+            
+        }
     }
     
     public float getSize(){
