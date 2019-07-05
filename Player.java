@@ -61,7 +61,8 @@ public class Player extends Element{
 
     public void show(){
         int[] color = {255,255,255};
-        view.ellipse(position, size, size, rotation, color);
+        // view.ellipse(position, size, size, rotation, color);
+        view.image("player", position.copy().sub(new PVector(view.getGridSize()/2, view.getGridSize()/2)), rotation);
         //leben
         color = new int [] {100,100,100};
         view.rect(new PVector(position.x-50, position.y-75), 100, 12, 0, color);
@@ -81,6 +82,7 @@ public class Player extends Element{
     public void move(PVector direction){
         if (direction.mag() > 0) {
             position.add(direction.copy().mult(movespeed));
+            rotation = (float) Math.toDegrees(direction.copy().heading()) + 90;
             if (!moving) {
                 moving = true;
                 // System.out.println("moving");
@@ -93,6 +95,9 @@ public class Player extends Element{
 
     public void targetNearestEnemy(){
         targetDirection = enemyManager.getNearestEnemyDirection(position.copy());
+        if (!moving) {
+            rotation = (float) Math.toDegrees(targetDirection.copy().heading()) + 90;
+        }
     }
 
     public void shoot(){

@@ -14,6 +14,7 @@ public class View{
     //variables
     float gridSize;
     //images
+    PImage playerImg;
     PImage field;
     PImage block;
     PImage water;
@@ -27,6 +28,7 @@ public class View{
     }
     
     public void setup() {
+        playerImg = pApplet.loadImage("assets/player.png");
         field = pApplet.loadImage("assets/field_3.png");
         block = pApplet.loadImage("assets/block.png");
         water = pApplet.loadImage("assets/water_2.png");
@@ -144,6 +146,9 @@ public class View{
             break;
             case "enemyProjectile":
             pApplet.image(enemyProjectile, 0,0);
+            break;
+            case "player":
+            pApplet.image(playerImg, 0,0);
             break;
         }
 
