@@ -116,6 +116,13 @@ public class Player extends Element{
             health = 0;
         }
     }
+    
+    public void heal(float value){
+        health += value;
+        if (health > maxHealth) {
+            health = maxHealth;
+        }
+    }
 
     public boolean isDead() {
         if (health <= 0)

@@ -65,11 +65,12 @@ public abstract class Enemy extends Element{
         }
     }
     
-    public void die() {
+    public void die(ItemManager itemManager) {
         if (Math.random() <= dropHealthPotionChance/100) {
-            
+            itemManager.addHealthPotion(position);
         }
     }
+    
     
     public float getSize(){
         return size;

@@ -6,6 +6,7 @@ public class EnemyManager{
     View view;
     World world;
     ProjectileManager projectileManager;
+    ItemManager itemManager;
 
     //Variablen
     private ArrayList<Enemy> enemies;
@@ -16,10 +17,11 @@ public class EnemyManager{
         this.gridSize = gridSize;
     }
 
-    public void login(View view, ProjectileManager projectileManager, World world){
+    public void login(View view, ProjectileManager projectileManager, World world, ItemManager itemManager){
         this.view = view;
         this.projectileManager = projectileManager;
         this.world = world;
+        this.itemManager = itemManager;
     }
 
     public void update(){
@@ -86,7 +88,7 @@ public class EnemyManager{
 
             e.takeDamage(projectileManager.getEnemyDamage(e.position.copy(), e.getSize()));
             if (e.getHealth() <= 0) {
-                e.die();
+                e.die(itemManager);
                 enemies.remove(e);
             }
         }

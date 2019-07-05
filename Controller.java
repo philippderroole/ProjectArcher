@@ -44,8 +44,9 @@ public class Controller{
         view.login(player, world, enemyManager, projectileManager, itemManager, gridSize);
         player.login(view, projectileManager, enemyManager);
         world.login(view, projectileManager);
-        enemyManager.login(view, projectileManager, world);
+        enemyManager.login(view, projectileManager, world, itemManager);
         projectileManager.login(view);
+        itemManager.login(view);
     }
 
     public void setup(){
@@ -76,6 +77,7 @@ public class Controller{
         enemyManager.clearEnemies();
         enemyManager.loadEnemies(level);
         projectileManager.killProjectiles();
+        itemManager.clearItems();
 
         player.setPosition(new PVector(100,960/2));
     }
@@ -96,7 +98,10 @@ public class Controller{
         enemyManager.attack(player.getPosition().copy());
         float collisionDamage = enemyManager.calculateCollisionDamage(player.getPosition(), player.getSize());
         player.takeDamage(collisionDamage);
-
+        
+        //heal
+        float healthRestore = itemManager.checkPlayerCollision(player.getPosition(), player.getSize());
+        player.heal(healthRestore);
         //update
         world.update();
         enemyManager.update();

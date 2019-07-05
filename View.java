@@ -68,7 +68,7 @@ public class View{
         enemyManager.show();
         itemManager.show();
         
-        pApplet.image(healthPotion, 64*19, 64*14);
+        
         //ellipse(new PVector(200, 300), 120, 60, 45);
 
     }
@@ -149,6 +149,9 @@ public class View{
             break;
             case "player":
             pApplet.image(playerImg, 0,0);
+            break;
+            case "healthPotion":
+            pApplet.image(healthPotion, 0,0);
             break;
         }
 

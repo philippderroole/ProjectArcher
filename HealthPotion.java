@@ -6,6 +6,9 @@ public class HealthPotion extends Item
     {
         this.position = position;
         this.view = view;
+        
+        healthValue = 200;
+        size = 20;
     }
     
     public void update() {
@@ -13,6 +16,8 @@ public class HealthPotion extends Item
     }
     
     public void show() {
-        view.image("healthPotion", position, rotation);
+        view.image("healthPotion", position.copy().sub(new PVector(view.getGridSize()/2, view.getGridSize()/2)), rotation);
     }
+    
+    
 }
