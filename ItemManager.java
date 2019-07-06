@@ -44,7 +44,7 @@ public class ItemManager
         float health = 0;
         for (int i = items.size() -1; i >= 0; i --) {
             Item item = items.get(i);
-            float addHealth = item.checkPlayerCollision(playerPosition, playerSize);
+            float addHealth = item.checkPlayerCollision(playerPosition.copy(), playerSize);
             if (addHealth > 0) {
                 items.remove(item);
             }

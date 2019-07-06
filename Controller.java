@@ -156,7 +156,7 @@ public class Controller{
 
     public PVector getInputDirection(){
         PVector direction = new PVector(0,0);
-        // System.out.println(pressedKeys);
+        System.out.println(pressedKeys);
         //arrowkeys
         if(pressedKeys.contains("" + 37)){ //links
             direction.add(-1, 0);
