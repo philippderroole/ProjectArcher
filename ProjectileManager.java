@@ -32,7 +32,7 @@ public class ProjectileManager extends PApplet{
         projectiles = new ArrayList<Projectile>();
     }
 
-    public void addPlayerProjectile(PVector startPosition, PVector direction, float damage,String[] effects){
+    public void addPlayerProjectile(PVector startPosition, PVector direction, float damage, ArrayList<String> effects){
         PlayerProjectile projectile = new PlayerProjectile(startPosition, direction, damage, effects, view);
         projectiles.add(projectile);
     }

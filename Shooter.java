@@ -7,6 +7,8 @@ public class Shooter extends Enemy{
         this.view = view;
         this.size = size;
 
+        rotation = 270f;
+        
         maxHealth = 500;
         health = maxHealth;
         damage = 50;

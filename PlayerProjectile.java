@@ -1,10 +1,11 @@
 import processing.core.*;
+import java.util.*;
 
 public class PlayerProjectile extends Projectile{
 
 
     
-    public PlayerProjectile(PVector startPosition, PVector direction, float damage, String[] effects, View view){
+    public PlayerProjectile(PVector startPosition, PVector direction, float damage, ArrayList<String> effects, View view){
         speed = 50;
         size = 15;
         

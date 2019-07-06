@@ -13,7 +13,7 @@ public class Player extends Element{
 
     private Enemy target;
     private PVector targetDirection;
-    private String[] effects;
+    private ArrayList<String> effects;
 
     private float maxHealth;
     private float health;
@@ -38,6 +38,7 @@ public class Player extends Element{
         attackspeed = 0.5f;
         currentDelay = attackspeed * 30;
         movespeed = size/4;
+        effects = new ArrayList<String>();
     }
 
     public void login(View view, ProjectileManager projectileManager, EnemyManager enemyManager){
@@ -73,6 +74,17 @@ public class Player extends Element{
         view.text(String.valueOf((int) health), position.x+2, position.y - 78, 20, color);
         color = new int[] {255, 255, 255};
         view.text(String.valueOf((int) health), position.x, position.y - 80, 20, color);
+    }
+
+    public void addEffect(String effect) {
+        effects.add(effect);
+    }
+    public void lowerDelay() {
+        this.attackspeed-=0.05;
+        if (this.attackspeed < 0.15) {
+            attackspeed = 0.15f;
+        }
+        System.out.println(attackspeed);
     }
 
     public void correctPosition(PVector direction){
@@ -116,7 +128,7 @@ public class Player extends Element{
             health = 0;
         }
     }
-    
+
     public void heal(float value){
         health += value;
         if (health > maxHealth) {
