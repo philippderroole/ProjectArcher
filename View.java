@@ -19,6 +19,7 @@ public class View{
     PImage block;
     PImage water;
     PImage spider;
+    PImage frog;
     PImage playerProjectile;
     PImage enemyProjectile;
     PImage healthPotion;
@@ -33,6 +34,7 @@ public class View{
         block = pApplet.loadImage("assets/block.png");
         water = pApplet.loadImage("assets/water_2.png");
         spider = pApplet.loadImage("assets/enemy_spider.png");
+        frog = pApplet.loadImage("assets/enemy_frog.png");
         playerProjectile = pApplet.loadImage("assets/projectile.png");
         enemyProjectile = pApplet.loadImage("assets/projectile_enemy.png");
         healthPotion = pApplet.loadImage("assets/potion_hp.png");
@@ -140,6 +142,9 @@ public class View{
             break;
             case "spider":
             pApplet.image(spider, 0,0);
+            break;
+            case "frog":
+            pApplet.image(frog, 0,0);
             break;
             case "playerProjectile":
             pApplet.image(playerProjectile, 0,0);
