@@ -18,7 +18,7 @@ public abstract class Enemy extends Element{
     protected float moveSpeed;
     protected PVector moveDir;
     
-    protected float dropHealthPotionChance = 100;
+    protected float dropHealthPotionChance = 30;
     
 
     public Enemy(){
