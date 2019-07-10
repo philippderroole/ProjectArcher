@@ -98,7 +98,7 @@ public class Controller{
         enemyManager.attack(player.getPosition().copy());
         float collisionDamage = enemyManager.calculateCollisionDamage(player.getPosition(), player.getSize());
         player.takeDamage(collisionDamage);
-        
+
         //heal
         float healthRestore = itemManager.checkPlayerCollision(player.getPosition(), player.getSize());
         player.heal(healthRestore);
@@ -108,10 +108,8 @@ public class Controller{
         projectileManager.update();
         itemManager.update();
         player.update();
-        
 
         view.show();
-
         // check player death
         if (player.isDead()) {
             reset();
@@ -124,7 +122,12 @@ public class Controller{
 
     public void reset() {
         // player = null;
-
+        int[] color =  {0,0,0};
+        view.text("Game Over!", view.getWidth()/2+2, view.getHeight()/2+2, 205, color);
+        
+        color = new int[]{250,250,100};
+        view.text("Game Over!", view.getWidth()/2, view.getHeight()/2, 200, color);
+        player = null;
         // setup();
     }
 
