@@ -3,12 +3,13 @@
 1;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w; ; ;w;1
 1;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;1
 1;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;1
+1;W;W;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;1
 1; ; ;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;1
 1; ; ;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;1
-1;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;1
 1;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;1
 1;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;1
 1;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;1
 1;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w; ; ;1
 1;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;s; ;1
+1;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;w;1
 1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1
