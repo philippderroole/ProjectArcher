@@ -127,7 +127,8 @@ public class Controller{
         
         color = new int[]{250,250,100};
         view.text("Game Over!", view.getWidth()/2, view.getHeight()/2, 200, color);
-        player = null;
+        // player = null;
+        pApplet.frameRate(0);
         // setup();
     }
 
